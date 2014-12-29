@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<!--[if IE 6]> <html class="no-js" id="ie6" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 7]> <html class="no-js" id="ie7" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 8]> <html class="no-js" id="ie8" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" dir="ltr" lang="en-US">
+<!--<![endif]-->
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>Fringe-X</title>
+    <!-- <link rel="shortcut icon" href="favicon.png" > -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5shiv-printshiv.js"></script>
+    <![endif]-->
+    <script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="/static/fringe_x/js/custom.js"></script>
+    <script src="/static/fringe_x/js/location_selection_logic.js"></script>
+    <script src="/static/fringe_x/js/ads_data.js"></script>
+    <script>
+$(document).ready(function() {
+	/* Check width on page load*/
+    if ( $(window).width() < 1280 & $(window).width() > 1007) {
+  $(".catBlock .listBox:nth-child(4n)").addClass("clr");
+    }
+        else if ( $(window).width() < 480) {
+    	  $(".catBlock .listBox:nth-child(2n)").addClass("clr");
+    }
+    else {
+    	  $(".catBlock .listBox:nth-child(5n)").addClass("clr");
+    }
+});
+
+{% if not location_state_context %}
+{% if not location_city_context %}
+
+$(document).ready(function()
+{
+	$(window).load(function()
+	{
+		$('body').addClass('hidden-body');
+		$('.overley-bg').show();
+		$('.disc-post,.find-locate').show()
+	});
+
+	$('.close-btn').on('click',function(){
+		$('body').removeClass('hidden-body');
+		$('.overley-bg').hide();
+		$('.disc-post,.find-locate').hide()
+	});
+});
+
+{% endif %}
+{% endif %}
+</script>
+
+    <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/responsive.css" />
+</head>
+<body>
+{% csrf_token %}
+<div class="wrapper">
+    <div class="header">
+        <div class="headTop">
+            <div class="container">
+                <!-- <div class="row" -->
+                <h1 class="logo"> <a href="/fringe_circle/">Fringe-Circle</a> </h1>
+                <div class="topNav" id="home_location">
+                    <div class="hmLink" id="hmLink">
+                        <img width="22px"src="/static/fringe_x/images/location-white.png"/>
+                        {% if location_state_context %}
+                        {% if location_city_context %}
+                        {{ location_city_context }}  ({{ location_state_context }})
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    {% if current_user_context %}
+                    <div class="logBtns">
+                        <a href="#" id="signin" class="signBtn">
+                            Hi {{ current_user_context.name }}
+                        </a>
+
+                        <a href="/fringe_circle/logout/" id="regin" class="regBtn">
+                            Logout
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if not current_user_context %}
+                    <div class="socialIco"> <a href="#" class="fb" title="Facebook">Facebook</a> <a href="#" class="twit" title="twitter">Twitter</a> <a href="#" class="gPlus" title="Google Plus">Google Plus</a> <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>
+                    {% endif %}
+                </div>
+                <!-- topNav ends -->
+                <!-- </div> -->
+            </div>
+        </div>
+        <!-- headTop ends -->
+        <div class="headLinks">
+            <div class="container">
+                <div class="headCol active"> <a href="/fringe_circle/fringe_x/"><span><img src="/static/fringe_x/images/friX-icon.png" alt=""></span><span>Fringe-X</span></a> </div>
+                <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/friBoard-icon.png" alt=""></span><span>Fringe-Board</span></a> </div>
+                <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/friExp-icon.png" alt=""></span><span>Fringe-Exp</span></a> </div>
+                <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/deal-icon.png" alt=""></span><span>Fringe-Deal</span></a> </div>
+            </div>
+            <!-- headLinks ends -->
+        </div>
+        <!-- headLinks ends -->
+        <div class="headSearch">
+            <div class="container">
+                <form action="" method="">
+                    <div class="srcForm">
+                        <div class="selBox" id="popup">
+                            <select>
+                                <option>
+                                    {% if location_state_context %}
+                                    {% if location_city_context %}
+                                    {{ location_state_context }}>{{ location_city_context }}
+                                    {% endif %}
+                                    {% endif %}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="inBox">
+                            <input type="text" name="serKeyword" id="keyword" placeholder="Type your search here...">
+                            <input type="submit" name="search" value="seaach">
+                        </div>
+                    </div>
+                    <div class="postBtn"> <a href="/fringe_circle/post_ad/">Post Free Ads</a> </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="content">
+        <div class="container">
+            <div class="catBlock row">
+                {% if product_prime_category_context %}
+                {% for product_prime_category in product_prime_category_context %}
+                <div class="listBox">
+                    <h2 class="boxHead automob"> <span class="headIcon"><img src="{% static product_prime_category.icon_image_url %}"></span> <span class="headTxt">{{ product_prime_category.name }}</span> </h2>
+                    <div class="listCont">
+                        {% if subcat_dict %}
+                        {% for prime_cat, subcats in subcat_dict.items %}
+                        {% ifequal product_prime_category prime_cat %}
+                        <ul>
+                            {% for subcat in subcats %}
+                            <li>
+                                <a href="/fringe_circle/product_list/{{ subcat }}">
+                                    <div class="lstItem">{{ subcat }}</div>
+                                    <!--<div class="numItem">3</div>-->
+                                </a>
+                            </li>
+                            {% endfor %}
+                            <li id="{{ prime_cat.name }}" onclick="populate_subcat('{{ prime_cat.name }}');" style="cursor:pointer;">View all</li>
+                        </ul>
+                        {% endifequal %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <!-- autoMob -->
+
+            </div>
+            <!-- catBlock ends -->
+            <div class="alertBox">
+                <div class="alertFrm">
+                    <h3>Create Free Alert <span>(Tell us your need)</span></h3>
+                    <form action="" method="post">{% csrf_token %}
+                        <div class="frmRow">
+                            <div class="frmCol">
+                                {% if product_prime_category_context %}
+                                <div class="list-dropdown">
+                                    <select name="prime_category_select">
+                                        <option>Select Category</option>
+                                        {% for primecat in product_prime_category_context %}
+                                        <option value="{{ primecat.name }}" onclick="populate_subcat_alert(this.value);">{{ primecat.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="frmCol">
+                                <div class="list-dropdown">
+                                    <select id="subcategory_select_alert" name="subcategory_select_alert">
+                                        <option>Select SubCategory</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="frmCol">
+                                <div class="list-dropdown">
+                                    {% if all_states_context %}
+                                    <select id="state_select_alert" name="state_select_alert">
+                                        <option>Select State</option>
+                                        {% for state in all_states_context %}
+                                        <option value="{{ state.name_of_state }}"  onclick="populate_city_alert(this.value);">{{ state.name_of_state }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="frmCol">
+                                <div class="list-dropdown">
+                                    <select id="city_select_alert" name="city_select_alert">
+                                        <option>Select City</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frmRow">
+                            <div class="frmCol">
+                                <div class="list-dropdown">
+                                    <select id="locality_select_alert" name="locality_select_alert">
+                                        <option>Select Locality</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="frmCol">
+                                <div class="list-dropdown">
+                                    <select id="subfilter_select_alert" name="subfilter_select_alert">
+                                        <option>Select Filter</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="frmRow subWrap">
+                            <input type="submit" name="subAlert" id="subAlert" vlaue="Submit">
+                        </div>
+                    </form>
+                </div>
+                <!-- alertFrm ends -->
+            </div>
+            <!-- alertBox ends -->
+            <div class="linkBox">
+                <div class="boxCol">
+                    <div class="twitPost">
+                        <h3>Twitter</h3>
+                        <ul class="postLst">
+                            <li>
+                                <div class="postEntry">
+                                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum enim.</p>
+                                </div>
+                                <div class="postTm">
+                                    <p><span class="time">10:16 AM</span> <span class="day">yesterday</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="postEntry">
+                                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum enim.</p>
+                                </div>
+                                <div class="postTm">
+                                    <p><span class="time">10:16 AM</span> <span class="day">yesterday</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="postEntry">
+                                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum enim.</p>
+                                </div>
+                                <div class="postTm">
+                                    <p><span class="time">10:16 AM</span> <span class="day">yesterday</span></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- twitPost ends -->
+                <div class="boxCol">
+                    <div class="popCat">
+                        <h3>Popular Category On Fringe-x</h3>
+                        <div class="catTag"> <a href="#">Motor Bikes</a> <a href="#">Real Estate</a> <a href="#">Novels</a> <a href="#">Pets</a> <a href="#">Education</a> <a href="#">Pets</a> <a href="#">Service</a><a href="#">Pets</a><a href="#">Matrimonial</a><a href="#">Events</a><a href="#">Jobs</a><a href="#">Novels</a><a href="#">Animals</a><a href="#">Novels</a><a href="#">Novels</a><a href="#">Novels</a> </div>
+                    </div>
+                </div>
+                <!-- popCat ends -->
+                <div class="boxCol ad">
+                    <div class="adLnk"> <img src="/static/fringe_x/images/adImg.jpg"> </div>
+                </div>
+                <!-- vidLnk ends -->
+            </div>
+            <!-- linkBox Ends -->
+        </div>
+        <!-- container ends -->
+    </div>
+    <!-- content ends -->
+    <div class="footer">
+        <div class="sellStp">
+            <div class="container">
+                <h2>Everything sells in 5 simple steps!</h2>
+                <p>Consequat ipsum, nec sagittis sem nibh id elit.Consequat ipsum, nec sagittis sem nibh id elit.</p>
+                <img src="/static/fringe_x/images/postStp.png"> </div>
+            <!-- container ends -->
+        </div>
+        <div class="footTop">
+            <div class="container">
+                <div class="row">
+                    <div class="footCol list">
+                        <h3>Popular Cities</h3>
+                        <ul class="lstCol first">
+                            <li><a href="#">Ahmdabad</a></li>
+                            <li><a href="#">Banglore</a></li>
+                            <li><a href="#">Chandigarh</a></li>
+                            <li><a href="#">Chennai</a></li>
+                            <li><a href="#">Coimbatore</a></li>
+                            <li><a href="#">Delhi</a></li>
+                            <li><a href="#">Gurgaon</a></li>
+                            <li><a href="#">Hyderabad</a></li>
+                        </ul>
+                        <ul class="lstCol">
+                            <li><a href="#">Ahmdabad</a></li>
+                            <li><a href="#">Banglore</a></li>
+                            <li><a href="#">Chandigarh</a></li>
+                            <li><a href="#">Chennai</a></li>
+                            <li><a href="#">Coimbatore</a></li>
+                            <li><a href="#">Delhi</a></li>
+                            <li><a href="#">Gurgaon</a></li>
+                            <li><a href="#">Hyderabad</a></li>
+                        </ul>
+                        <ul class="lstCol">
+                            <li><a href="#">Jipur</a></li>
+                            <li><a href="#">Kochi</a></li>
+                            <li><a href="#">Kolkata</a></li>
+                            <li><a href="#">Lucknow</a></li>
+                            <li><a href="#">Mumbai</a></li>
+                            <li><a href="#">Pune</a></li>
+                            <li><a href="#">All Cities</a></li>
+                        </ul>
+                    </div>
+                    <div class="footCol list two">
+                        <h3>Quick Links</h3>
+                        <ul class="lstCol first">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">All Cities</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Premium Ads</a></li>
+                            <li><a href="#">Videos</a></li>
+                            <li><a href="#">Advertise With Us</a></li>
+                        </ul>
+                        <ul class="lstCol">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">All Cities</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Premium Ads</a></li>
+                            <li><a href="#">Videos</a></li>
+                            <li><a href="#">Advertise With Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footCol">
+                        <h3>About Us</h3>
+                        <p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+                    </div>
+                    <div class="footCol">
+                        <h3>Get In Touch</h3>
+                        <p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+                        <div class="footCont">
+                            <div class="location">
+                                <p><span>icon</span><span>Moonshine Street No: 14/05<br>
+								Light City, Jupiter</span></p>
+                            </div>
+                            <div class="contNo"><p><span>icon</span><span>0247 541 65 87</span></p></div>
+                            <div class="mail"><p><span>icon</span><span><a href="mailto:support@longwave.com">support@longwave.com</a></span></p></div>
+
+                        </div>
+                    </div>
+                </div>	<!-- row ends -->
+                <div class="footNav">
+                    <ul>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Techology</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Classifieds</a></li>
+                        <li><a href="#">Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="footInfo">
+                    <p>
+                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
+                </div>
+            </div>
+        </div>	<!-- footTop ends -->
+        <!--Footer Bottom-->
+        <div class="footBottom">
+            <div class="container">
+                <div class="fleft">
+                    <div>Copyright © 2014 Company Name.</div>
+                    <div class="footLnk"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="fRight">
+                    <div class="footImg"><img src="/static/fringe_x/images/footImg.jpg" alt=""></div>
+                    <div class="footTxt"><span>Lorem Ipsum</span> ut aliquam massa nisl quis neque. Suspendisse in orci enim, aliquam massa nisl quis neque. Suspendisse in orci enim.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--popup-->
+
+        <!--Find Location-->
+
+
+        <div class="find-locate">
+            <div class="disc-post-wr">
+                <span class="close-btn">x</span>
+                <div class="overlayCont findLoc">
+                    <div class="frmWrap">
+                        <div class="inBox">
+                            <input type="text" name="serLoc" id="serLoc" placeholder="Search Location">
+                            <input type="submit" name="search" value="search">
+                        </div>
+                        <h2>Find Your Location</h2>
+                        <hr>
+                        <div class="frmContainer">
+                            <div class="cityLst">
+                                <h3 id="location_heading">Popular cities</h3>
+                                <div class="row" id="location_list">
+                                    <ul>
+                                        <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Agra">Agra</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Gujarat_Ahmedabad">Ahmedabad</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Karnataka_Bangalore">Bangalore</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Madhya Pradesh_Bhopal">Bhopal</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Tamil Nadu_Chennai">Chennai</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Delhi_Delhi">Delhi</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="/fringe_circle/location_selection/Andhra Pradesh_Hyderabad">Hyderabad</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Madhya Pradesh_Indore">Indore</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Rajasthan_Jaipur">Jaipur</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Kanpur">Kanpur</a></li>
+                                        <li><a href="/fringe_circle/location_selection/West Bengal_Kolkata">Kolkata</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Lucknow">Lucknow</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="/fringe_circle/location_selection/Punjab_Amritsar">Amritsar</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Punjab_Ludhiana">Ludhiana</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Maharashtra_Mumbai">Mumbai</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Maharashtra_Nagpur">Nagpur</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Bihar_Patna">Patna</a></li>
+                                        <li><a href="/fringe_circle/location_selection/Maharashtra_Pune">Pune</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li onclick="populate_state_list();" style="color:#fff;background-color:#1994d1; text-align:center; cursor:pointer;">view all</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- frmContainer ends -->
+                    </div>
+                    <!-- frmWrap ends -->
+                </div>
+                <div class="clearfx"></div>
+
+
+            </div>
+        </div>
+
+        <!-- subcategory popups -->
+        <div id="subcat_list_all" >
+        </div>
+        <!--Login-->
+
+        <div class="login-popup">
+            <div class="disc-post-wr">
+                <span class="close-btn">x</span>
+                <h1>I already have a account</h1>
+
+                <div class="frmContainer">
+
+                    <h3>Sign In</h3>
+                    <form action="" method="post">
+                        <div class="frmRow">
+                            <input type="text" name="userId" id="userId" placeholder="Email / User ID">
+                        </div>
+                        <div class="frmRow">
+                            <input type="password" name="pswd" id="pswdaltEmail" placeholder="Password">
+                        </div>
+                        <div class="subWrap">
+                            <input type="submit" name="" id="" value="Submit">
+                        </div>
+                    </form>
+                    <div class="frgPass"> <a href="#">Forgot your password?</a> </div>
+
+                </div>
+
+
+                <div class="clearfx"></div>
+            </div>
+        </div>
+
+        <!--Sign Up-->
+
+        <div class="register-popup">
+            <div class="disc-post-wr">
+                <span class="close-btn">x</span>
+                <h1>Create new account</h1>
+
+                <div class="frmContainer">
+                    <h3>Register</h3>
+                    <form action="/fringe_circle/register_corporate_email/" method="post">{% csrf_token %}
+                        <div class="frmRow">
+                            <input type="email" name="workEmail" id="workEmail" placeholder="Work Email">
+                            <a href="#" class="quesIcon">question</a> </div>
+                        <div class="frmRow">
+                            <input type="email" name="altEmail" id="altEmail" placeholder="Alternate Email">
+                            <a href="#" class="quesIcon">question</a> </div>
+                        <div class="divider"><img src="/static/fringe_x/images/signupDiv.png"></div>
+                        <div class="loginOpt">
+                            <div class="fbLogin"> <a href="#"><img src="/static/fringe_x/images/fbLogin-Btn.png"></a> </div>
+                            <!-- fbLogin ends -->
+                            <div class="linkIn-Login"> <a href="#"><img src="/static/fringe_x/images/linkIn-Btn.png"></a> </div>
+                            <!-- fbLogin ends -->
+                        </div>
+                        <div class="check">
+                            <input type="checkbox" name="" id="">
+                            I agree with Terms of service </div>
+                        <div class="subWrap">
+                            <input type="submit" name="" id="" value="Submit">
+                        </div>
+                    </form>
+                    <div class="frm-msg">
+                        <h4>Welcome to FringeCircle!</h4>
+                        <p>Please check your e-mail for registration link.</p>
+                        <p>Do not forget to check your spam folders!</p>
+                    </div>
+                </div>
+                <div class="clearfx"></div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="overley-bg"></div>
+        <!--popup-->
+</body>
+</body>
+</html>

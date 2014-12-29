@@ -1,0 +1,290 @@
+@media all and (max-width:1290px) {
+.container {box-sizing:border-box; padding:0 10px;}
+ul.lstCol {margin-left:12px;}
+.srcForm {width:75%;}
+.frmCol {width:23.6%;}
+
+
+}
+
+@media all and (max-width:1030px) {
+.headCol {margin:0; width:23%;}
+.srcForm {width:70%;}
+.inBox {width:59%;}
+.srcForm input[type="text"], .frmWrap .inBox input[type="text"] {width:86%;}
+.boxHead {padding:8px 5px;}
+.headIcon {width:20%; margin-right:5px;}
+.frmCol {width:23.4%;}
+.catTag a {margin:0 5px 5px 0;}
+.boxCol.ad > div {padding:20% 0 0;}
+.footTop .footCol:nth-child(1) {
+    max-width: 50%;
+    width: 50%;
+}
+.footTop .footCol:nth-child(2) {
+    margin-left: 0;
+    max-width: 50%;
+    width: 50%;
+}
+.footTop .footCol:nth-child(3), .footTop .footCol:nth-child(4) {
+    box-sizing: border-box;
+    margin-left: 0;
+    max-width: 50%;
+    padding-right: 30px;
+    padding-top: 20px;
+    width: 50%;
+}
+.footBottom .fRight {width:50%;}
+.catTag a {padding:7px 10px; font-size:15px;}
+
+.itemDetail {width:46%;}
+.price a {padding:5px;}
+.desc {line-height:20px;}
+.check {width:77%;}
+.custom .ui-accordion-header {padding:5px 10px 5px 30px !important;}
+.dealDet {width:77%; line-height:18px;}
+.ad-dtl-field:nth-child(2n+1) {
+    margin-right: 0.7%;
+}
+
+}
+
+@media all and (max-width:990px) {
+.srcForm input[type="text"], .frmWrap .inBox input[type="text"] {width:85%;}
+.listBox {margin:0 0.45% 12px;}
+.frmCol {
+    width: 23%;
+}
+.footer {margin-top:40px;}
+.itemDetail {width:42%;}
+
+}
+
+@media all and (max-width:810px) {
+.headCol {
+    box-sizing: border-box;
+    margin: 0;
+    width: 25%;
+	padding:0;
+}
+.headCol a span:first-child {
+    margin-right: 10px;
+}
+.srcForm {
+    width: 100%;
+}
+.srcForm .inBox {
+    float: right;
+    margin: 0;
+    padding: 19px 10px;
+	width:60%;
+}
+.postBtn {
+    float: right;
+    margin-top: 20px;
+}
+.listBox {
+    margin: 0 0.5% 12px;
+	width:32%;
+}
+.frmCol {margin-left:2%;}
+.boxCol {margin-left:15px;}
+.alertBox:after {margin-bottom:0;}
+.boxCol {width:100%; max-width:100%; box-sizing:border-box; margin:auto;}
+.boxCol > div {min-height:0px;}
+.boxCol.ad > div {padding:0; text-align:center;}
+.boxCol.ad > div img {vertical-align:middle;}
+/*.footer {
+    margin-top: 0;
+}
+*/
+.footNav ul li {padding:0 12px;}
+.footTxt {width:84%; margin-left:4%;}
+.check {width:76%;}
+.itemDetail {width:100%; padding-top:15px;}
+.price {text-align:left; margin-bottom:10px;}
+.dealIcon {margin-right:5px;}
+.dealDet {width:78%;}
+.adCol1 {margin-right:15px;}
+ul.lstCol {min-width:116px;}
+.ad-step-content .headTxt {font-size:14px;}	
+.ad-step-content .boxHead {margin-right:10px; margin-bottom:10px; min-width:218px;}
+.add-photo-wrap {width:80%; padding:70px 0;}
+.ad-dtl-field {width:48.8%;}
+.postBtn a, .overlayCont .subWrap input[type="submit"] {padding:10px;}
+
+
+}
+
+@media all and (max-width:770px) {
+.sideWidget {width:100%; margin-top:20px;}
+.discList {padding-bottom:0px; border-bottom:0px; margin-bottom:0px; width:48.6%; float:left;}
+.relDeals {width:48.6%; float:right;}
+.dealDet {width:90%;}
+.sideWidget h2 {margin-bottom:15px;}
+.filterCol {width:26%;}
+.catListing {width:72%; float:right; margin:0;}
+.catHead {text-align:center;}
+.headLeft {float:none;}
+.viewCatLst {width:44%;}
+.headRht {width:82%; float:none; margin-bottom:10px; margin-top:5px;}
+.itemDetail {width:43%; padding-top:0px;}
+.adCol1 {width:73%;}
+.ad-step-content .boxHead {min-width:210px; margin-right:8px;}
+.ad-dtl-field.choose-opt span {font-size:13px;}
+
+
+}
+
+@media all and (max-width:650px) {
+.headCol a span {margin:auto; width:100%; display:block;}
+.srcForm .selBox, .srcForm .inBox {width:100%; max-width:100%; box-sizing:border-box; padding:12px 10px; margin-bottom:15px;}
+.postBtn {width:auto; margin:0px;}
+.headSearch form {padding:25px;}
+.srcForm input[type="text"], .frmWrap .inBox input[type="text"] {width:89%;}
+.listBox {width:48.6%;}
+.frmCol {width:47.6%; margin:1% !important;}
+.subWrap {padding-top:15px;}
+ul.lstCol {min-width:100px;}
+.footTop .footCol:nth-child(1) {width:54%; max-width:54%;}
+.footTop .footCol:nth-child(2) {width:46%; max-width:46%;}
+.footNav ul li {margin:8px 0;}
+.footNav {padding-top:20px;}
+.fleft, .fRight {display:block; text-align:center; float:none;}
+.footBottom .fRight {text-align:left; width:auto;}
+
+/* 24 Oct 2014 - add by pankaj */
+.overlayCont.findLoc {width:92%;}
+.frmWrap {padding:20px;}
+.cityLst ul {margin-left:1%;}
+.adCol1 {margin-right:14px;}
+.itemDetail {width:100%; padding-top:10px;}
+.filterCol {width:35%;}
+.catListing {width:62%;}
+.custom.ui-accordion .ui-accordion-content {padding:10px 0 0 !important;}
+.ad-step-content .boxHead {min-width:45.2%;}
+.add-photo-wrap {width:90%;}
+.ad-dtl-field:nth-child(5), .ad-dtl-field:nth-child(6) {width:100%; margin:0 0 20px 0;}
+
+}
+
+@media all and (max-width:570px) {
+.logo {float:none; margin:0 auto; width:100%; text-align:center; padding-bottom:25px;}
+.topNav {
+    display: block;
+    float: none;
+    margin: auto;
+    width: 83%;
+}
+.srcForm input[type="submit"], .frmWrap .inBox input[type="submit"] {margin-left:3.5%;}
+ul.lstCol {margin-left:10px; min-width:90px;}
+.ad-step-content .boxHead {
+    min-width: 44.4%;
+}
+.add-photo-wrap {width:80%; padding:30px 0;}
+span.btnwrap {width:220px; margin:15px auto; display:block;}
+
+
+}
+
+@media all and (max-width:490px) {
+.topNav {width:99%;}
+.srcForm input[type="text"], .frmWrap .inBox input[type="text"] {width:87%;}
+.postBtn a, .overlayCont .subWrap input[type="submit"] {font-size:20px; padding:10px 15px;}
+.listBox {
+    float: none;
+     margin: 0 auto 15px;
+    width: 100%;
+}
+.lstItem {width:85%; max-width:88%;}
+.frmCol {
+    margin: 0 0.5% 10px !important;
+    width: 48.5%;
+}
+.footTop .footCol:nth-child(1) {
+    max-width: 100%;
+    width: 100%;
+	margin-bottom:15px;
+}
+.footTop .footCol:nth-child(2) {
+    max-width: 100%;
+    width: 100%;
+	margin-bottom:15px;
+}
+.footTop .footCol:nth-child(3) {
+    max-width: 100%;
+    width: 100%;
+	padding:0;
+}
+.footTop .footCol:nth-child(4) {
+    max-width: 100%;
+    width: 100%;
+	padding:0;
+}
+ul.lstCol {min-width:30%;}
+.footTxt {width:82%;}
+.sellStp p {margin-bottom:25px;}
+
+/* 24 Oct 2014 - add by pankaj */
+.overlayCont.logFrm, .overlayCont.register {width:95%;}
+.overlayCont h2 {padding-bottom:6px;}
+.frmContainer .subWrap {padding-top:0;}
+.adCol1 {width:72%;}
+.headRht {width:100%;}
+.viewCatLst {
+    margin-top: 8px;
+    width: 60%;
+}	
+.filterCol, .discList, .catListing, .relDeals  {width:100%; float:none;}
+.quant {float:right; padding-right:10px;}
+.discList {border-bottom:2px dotted #242424; margin-bottom:10px; padding-bottom:10px;}
+.ad-step-content .headTxt {line-height:50px; font-size:13px;}
+.ad-step-content .boxHead {
+    min-width: 43.4%;
+}
+.ad-step-content .headIcon {
+    margin-right: 5px;
+    width: 16%;
+}
+.ad-step-content .dropIcon {line-height:50px;}
+.ad-dtl-field {
+    width: 48.7%;
+}
+ul.cat-dropMenu {top:60px;}
+
+}
+
+@media all and (max-width:370px) {
+.frmCol {width:100%; margin:0 auto 10px !important;}
+.topNav {width:270px;}
+.topNav .socialIco {width:166px; margin:20px auto 0; display:block;}
+.headCol {width:49%; border:0; border-bottom:1px solid #bebebe;}
+.headCol:nth-child(3), .headCol:nth-child(4) {border-bottom:0px;}
+.headCol:nth-child(2), .headCol:nth-child(4) {border-left:1px solid #bebebe;}
+.headSearch form {padding:10px;}
+.srcForm input[type="text"], .frmWrap .inBox input[type="text"] {width:82%;}
+
+/* 24 Oct 2014 - add by pankaj */
+.cityLst ul {width:50%; max-width:50%; margin:0;}
+.overlayCont h2 {font-size:26px;}
+.overlayCont.register .frmContainer input {width:81%;}
+.viewCatLst {width:84%;}
+.ad-step-content .boxHead {width:100%; margin:0 auto 10px; box-sizing:border-box;}
+.add-photo-wrap {width:100%;}
+.ad-step-heading {font-size:15px;}
+.ad-step-num {margin-right:4px; padding:4px 8px;}
+.ad-dtl-field {width:100%; margin:0 auto 10px !important; float:none;}
+.ad-dtl-field.choose-opt span {display:block; width:100%; margin-bottom:5px;}
+
+}
+
+@media all and (max-width:330px) {
+.overlayCont.register .frmContainer input {width:77%;}
+.adCol1 {width:71%;}
+.postBtn a, .overlayCont .subWrap input[type="submit"] {
+    font-size: 16px;
+    padding: 5px 15px;
+}
+
+}
+

@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/fringe_x/js/custom.js"></script>
+    <script src="/static/fringe_x/js/dropzone.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
+    <script type="text/javascript">
+    function fetch_cities(state)
+    {
+    $('#city_select').empty();
+    $('#city_select').append('<option value="Select City">Select City</option>');
+    $.ajax({url:"/fringe_circle/fetch_city_names/"+state+"/",
+    dataType:'json',
+    }).done(function(data){
+    for(var i=0;i<data.length;i++){
+    $('#city_select').append('<option onclick="fetch_localities(this.value);" value="'+data[i]+'">'+data[i]+'</option>');
+    }
+    });
+    }
+
+    function fetch_localities(city)
+    {
+    $('#locality_select').empty();
+    $('#locality_select').append('<option  value="Select Locality">Select Locality</option>');
+    $.ajax({url:"/fringe_circle/fetch_locality_names/"+city+"/",
+    dataType:'json',
+    }).done(function(data){
+    for(var i=0;i<data.length;i++){
+    $('#locality_select').append('<option  value="'+data[i]+'">'+data[i]+'</option>');
+    }
+    });
+    }
+
+</script>
+</head>
+
+<body>
+<div class="header">
+<div class="headTop">
+    <div class="container">
+        <!-- <div class="row" -->
+        <h1 class="logo"> <a href="/fringe_circle/">Fringe-Cirle</a> </h1>
+        <div class="topNav">
+            <div class="hmLink"><a href="#">Home</a></div>
+            <div class="logBtns"> <a href="#" id="signIn" class="signBtn">Sign In</a> <a href="#" id="regIn" class="regBtn">Register</a> </div>
+            <div class="socialIco"> <a href="#" class="fb" title="Facebook">Facebook</a> <a href="#" class="twit" title="twitter">Twitter</a> <a href="#" class="gPlus" title="Google Plus">Google Plus</a> <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>
+        </div>
+        <!-- topNav ends -->
+        <!-- </div> -->
+    </div>
+</div> <!-- headTop ends -->
+
+
+
+
+
+
+<div class="headLinks">
+    <div class="container">
+        <div class="headCol">
+            <a href="/fringe_circle/fringe_x/"><span><img src="/static/fringe_x/images/friX-icon.png" alt=""></span><span>Fringe-X</span></a>
+        </div>
+        <div class="headCol">
+            <a href="#"><span><img src="/static/fringe_x/images/friBoard-icon.png" alt=""></span><span>Fringe-Board</span></a>
+        </div>
+        <div class="headCol">
+            <a href="#"><span><img src="/static/fringe_x/images/friExp-icon.png" alt=""></span><span>Fringe-Exp</span></a>
+        </div>
+        <div class="headCol">
+            <a href="#"><span><img src="/static/fringe_x/images/deal-icon.png" alt=""></span><span>Fringe-Deal</span></a>
+        </div>
+    </div> <!-- headLinks ends -->
+</div> <!-- headLinks ends -->
+
+<!--<div class="headSearch">-->
+<!--<div class="container">-->
+<!--<form method="" action="">-->
+<!--<div class="srcForm">-->
+<!--<div class="selBox" id="popup">-->
+<!--<select>-->
+<!--<option>Select your Location</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--<div class="inBox">-->
+<!--<input type="text" placeholder="Type your search here..." id="keyword" name="serKeyword">-->
+<!--<input type="submit" value="seaach" name="search">-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="postBtn"> <a href="#">Post Free Ads</a> </div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+
+
+
+<div class="container">
+    <div class="post-bx">
+        <h2>POST FREE ADS</h2>
+        <div class="post-bx-inner">
+            <div class="green-strip">
+                {% if current_subcategory_obj_context %}
+                {{ current_subcategory_obj_context.product_prime_category.name }}&nbsp;>&nbsp;{{ current_subcategory_obj_context.name  }}
+                {% else %}
+                <span>1</span>Select Category
+                {% endif %}
+            </div>
+            <div class="post-bx-category ">
+                {% if not subcategory_name_context %}
+                {% if product_prime_category_context %}
+                {% for prime_category in product_prime_category_context %}
+                <div class="cat-post-bx autoicon">
+
+                    <span><img src="{% static prime_category.icon_image_url %}" alt="">{{ prime_category.name }}</span>
+                    {% if product_subcategory_context %}
+                    <ul class="cat-dropMenu">
+                        {% for subcat in product_subcategory_context %}
+                        {% ifequal subcat.product_prime_category prime_category %}
+                        <a href="/fringe_circle/post_ad/{{ subcat.name }}"><li>{{ subcat.name }}</li></a>
+                        {% endifequal %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                {% else %}
+                <div class="cat-post-bx autoicon" style="width:40%;">
+                        <span>
+                            <img alt="" src="{% static current_subcategory_obj_context.product_prime_category.icon_image_url %}"></img>{{ current_subcategory_obj_context.name }}
+                        </span>
+
+                </div>
+                    <span>
+                            <a href="/fringe_circle/post_ad/" >
+                                <img src="/static/fringe_x/images/close_btn_27_27.png">
+                            </a>
+                        </span>
+                {% endif %}
+
+            </div>
+            <div class="clearfx"></div>
+            <form action="/fringe_circle/post_ad/" method="post" enctype="multipart/form-data" class="dropzone">{% csrf_token %}
+                <div class="green-strip"><span>2</span>Tittle for your ads</div>
+                <input name="title_ad" type="text" class="post-f-bx" />
+
+                <div class="clearfx"></div>
+                <div class="green-strip"><span>3</span>Photos for your ad</div>
+
+                <div class="post-centre-bx">
+                    <div class="vr-middle">
+                        <div class="vertical-md">
+                            <div class="upload-strip">
+                                <div class="upload-item">Add Photos<input name="ads_photo" type="file" multiple/></div>
+
+                                <!--<span>or</span>-->
+                                <!--<div class="upload-item last">Drag Photo Here<input name="ads_photo2" type="file"/></div>-->
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfx"></div>
+                <div class="green-strip"><span>4</span>Describe what makes your ad unique:</div>
+
+                <textarea name="description_ad" cols="" class="post-f-bx" rows="">Describe here</textarea>
+
+                <div class="clearfx"></div>
+                <div class="green-strip"><span>5</span>Product detail</div>
+
+                <div class="post-bx-col">
+                    {% if subcategory_filters_context %}
+                    {% for filter in subcategory_filters_context %}
+                    <div class="list-dropdown">
+                        <select name="{{ filter.name }}">
+                            <option value="">Select {{ filter.name }} </option>
+                            {% if subcategory_masters_dict_context %}
+                            {% for product_sub_filter_dict, subcategory_masters_dict in subcategory_masters_dict_context.items %}
+                            {% ifequal filter product_sub_filter_dict %}
+                            {% for master in subcategory_masters_dict %}
+
+                            <option value="{{ master.value }}">{{ master.value }}</option>
+                            {% endfor %}
+                            {% endifequal %}
+                            {% endfor %}
+                            {% endif %}
+                        </select></div>
+
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+
+                <div class="post-bx-col last">
+                    {% if prime_category_filters_context %}
+                    {% for primefilter in prime_category_filters_context  %}
+                    <div class="list-dropdown">
+                        <select name="{{ primefilter.name }}">
+                            <option value="primefilter.name">Select {{ primefilter.name }} </option>
+                            {% if prime_category_masters_dict_context  %}
+                            {% for prime_category_filter_dict, prime_category_master_dict in prime_category_masters_dict_context.items %}
+                            {% ifequal primefilter prime_category_filter_dict %}
+                            {% for prime_category_master in prime_category_master_dict %}
+                            <option value="{{ prime_category_master.value }}">{{ prime_category_master.value }} </option>
+                            {% endfor %}
+                            {% endifequal %}
+                            {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="list-dropdown">
+                        <select id="state_select" name="state_select">
+                            <option value=" Select State ">Select State </option>
+                            {% if states_context %}
+                            {% for state in states_context %}
+                            <option value="{{ state.name_of_state }}" onclick="fetch_cities(this.value);" >{{ state.name_of_state }}</option>
+                            {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    <div class="list-dropdown">
+                        <select name="city_select" id="city_select">
+
+                            <option value="Select City">Select City</option>
+                        </select>
+                    </div>
+                    <div class="list-dropdown">
+                        <select name="locality_select" id="locality_select" >
+                            <option value=" Select Locality ">Select Locality </option>
+                        </select>
+                    </div>
+                    <div class="post-f-bx">
+                        <div class="rdio-col first">Price</div>
+                        <div class="rdio-col"><span><input class="post-f-bx" name="price" type="text" value="" style="width:200%; padding:4px 4px;" /></span>I want to sell</div>
+                        <!--<div class="rdio-col"><span><input name="" type="radio" value="" /></span>I want to buy</div>-->
+                    </div>
+                </div>
+
+
+                <div class="post-btn-row">
+                    <div class="postBtn">
+                        <input type="submit" value="POST AD">
+                    </div>
+                </div>
+        </div>
+        </form>
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+</div>
+</div>
+
+<div class="footTop">
+    <div class="container">
+        <div class="row">
+            <div class="footCol list">
+                <h3>Popular Cities</h3>
+                <ul class="lstCol first">
+                    <li><a href="#">Ahmdabad</a></li>
+                    <li><a href="#">Banglore</a></li>
+                    <li><a href="#">Chandigarh</a></li>
+                    <li><a href="#">Chennai</a></li>
+                    <li><a href="#">Coimbatore</a></li>
+                    <li><a href="#">Delhi</a></li>
+                    <li><a href="#">Gurgaon</a></li>
+                    <li><a href="#">Hyderabad</a></li>
+                </ul>
+                <ul class="lstCol">
+                    <li><a href="#">Ahmdabad</a></li>
+                    <li><a href="#">Banglore</a></li>
+                    <li><a href="#">Chandigarh</a></li>
+                    <li><a href="#">Chennai</a></li>
+                    <li><a href="#">Coimbatore</a></li>
+                    <li><a href="#">Delhi</a></li>
+                    <li><a href="#">Gurgaon</a></li>
+                    <li><a href="#">Hyderabad</a></li>
+                </ul>
+                <ul class="lstCol">
+                    <li><a href="#">Jipur</a></li>
+                    <li><a href="#">Kochi</a></li>
+                    <li><a href="#">Kolkata</a></li>
+                    <li><a href="#">Lucknow</a></li>
+                    <li><a href="#">Mumbai</a></li>
+                    <li><a href="#">Pune</a></li>
+                    <li><a href="#">All Cities</a></li>
+                </ul>
+            </div>
+            <div class="footCol list two">
+                <h3>Quick Links</h3>
+                <ul class="lstCol first">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">All Cities</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Premium Ads</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Advertise With Us</a></li>
+                </ul>
+                <ul class="lstCol">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">All Cities</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Premium Ads</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Advertise With Us</a></li>
+                </ul>
+            </div>
+            <div class="footCol">
+                <h3>About Us</h3>
+                <p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+            </div>
+            <div class="footCol">
+                <h3>Get In Touch</h3>
+                <p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+                <div class="footCont">
+                    <div class="location">
+                        <p><span>icon</span><span>Moonshine Street No: 14/05<br>
+								Light City, Jupiter</span></p>
+                    </div>
+                    <div class="contNo"><p><span>icon</span><span>0247 541 65 87</span></p></div>
+                    <div class="mail"><p><span>icon</span><span><a href="mailto:support@longwave.com">support@longwave.com</a></span></p></div>
+
+                </div>
+            </div>
+        </div>	<!-- row ends -->
+        <div class="footNav">
+            <ul>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Techology</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Entertainment</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Classifieds</a></li>
+                <li><a href="#">Blogs</a></li>
+            </ul>
+        </div>
+        <div class="footInfo">
+            <p>
+                Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
+        </div>
+    </div>
+</div>	<!-- footTop ends -->
+<!--Footer Bottom-->
+<div class="footBottom">
+    <div class="container">
+        <div class="fleft">
+            <div>Copyright © 2014 Company Name.</div>
+            <div class="footLnk"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="fRight">
+            <div class="footImg"><img src="/static/fringe_x/images/footImg.jpg" alt=""></div>
+            <div class="footTxt"><span>Lorem Ipsum</span> ut aliquam massa nisl quis neque. Suspendisse in orci enim, aliquam massa nisl quis neque. Suspendisse in orci enim.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--popup-->
+
+<!--Find Location-->
+
+
+<div class="find-locate">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <div class="overlayCont findLoc">
+            <div class="frmWrap">
+                <div class="inBox">
+                    <input type="text" name="serLoc" id="serLoc" placeholder="Search Location">
+                    <input type="submit" name="search" value="search">
+                </div>
+                <h2>Find Your Location</h2>
+                <hr>
+                <div class="frmContainer">
+                    <div class="cityLst">
+                        <h3>Popular cities</h3>
+                        <div class="row">
+                            <ul>
+                                <li>Agra</li>
+                                <li>Ahmedabad</li>
+                                <li>Bangalore</li>
+                                <li>Bhopal</li>
+                                <li>Chennai</li>
+                                <li>Delhi</li>
+                            </ul>
+                            <ul>
+                                <li>Hyderabad</li>
+                                <li>Indore</li>
+                                <li>Jaipur</li>
+                                <li>Kanpur</li>
+                                <li>Kolkata</li>
+                                <li>Lucknow</li>
+                            </ul>
+                            <ul>
+                                <li>Lucknow</li>
+                                <li>Ludhiana</li>
+                                <li>Mumbai</li>
+                                <li>Nagpur</li>
+                                <li>Patna</li>
+                                <li>Pune</li>
+                            </ul>
+                            <ul>
+                                <li>Lucknow</li>
+                                <li>Ludhiana</li>
+                                <li>Mumbai</li>
+                                <li>Nagpur</li>
+                                <li>Patna</li>
+                                <li>Pune</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cityLst">
+                        <h3>Popular cities</h3>
+                        <div class="row">
+                            <ul>
+                                <li>Agra</li>
+                                <li>Ahmedabad</li>
+                                <li>Bangalore</li>
+                                <li>Bhopal</li>
+                                <li>Chennai</li>
+                                <li>Delhi</li>
+                            </ul>
+                            <ul>
+                                <li>Hyderabad</li>
+                                <li>Indore</li>
+                                <li>Jaipur</li>
+                                <li>Kanpur</li>
+                                <li>Kolkata</li>
+                                <li>Lucknow</li>
+                            </ul>
+                            <ul>
+                                <li>Lucknow</li>
+                                <li>Ludhiana</li>
+                                <li>Mumbai</li>
+                                <li>Nagpur</li>
+                                <li>Patna</li>
+                                <li>Pune</li>
+                            </ul>
+                            <ul>
+                                <li>Lucknow</li>
+                                <li>Ludhiana</li>
+                                <li>Mumbai</li>
+                                <li>Nagpur</li>
+                                <li>Patna</li>
+                                <li>Pune</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- frmContainer ends -->
+            </div>
+            <!-- frmWrap ends -->
+        </div>
+
+
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+<!--Login-->
+
+<div class="login-popup">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <h1>I already have a account</h1>
+
+        <div class="frmContainer">
+
+            <h3>Sign In</h3>
+            <form action="" method="post">
+                <div class="frmRow">
+                    <input type="text" name="userId" id="userId" placeholder="Email / User ID">
+                </div>
+                <div class="frmRow">
+                    <input type="password" name="pswd" id="pswdaltEmail" placeholder="Password">
+                </div>
+                <div class="subWrap">
+                    <input type="submit" name="" id="" value="Submit">
+                </div>
+            </form>
+            <div class="frgPass"> <a href="#">Forgot your password?</a> </div>
+
+        </div>
+
+
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+<!--Sign Up-->
+
+<div class="register-popup">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <h1>Create new account</h1>
+
+        <div class="frmContainer">
+            <h3>Register</h3>
+            <form action="" method="post">
+                <div class="frmRow">
+                    <input type="email" name="workEmail" id="workEmail" placeholder="Work Email">
+                    <a href="#" class="quesIcon">question</a> </div>
+                <div class="frmRow">
+                    <input type="email" name="altEmail" id="altEmail" placeholder="Alternate Email">
+                    <a href="#" class="quesIcon">question</a> </div>
+                <div class="divider"><img src="/static/fringe_x/images/signupDiv.png"></div>
+                <div class="loginOpt">
+                    <div class="fbLogin"> <a href="#"><img src="/static/fringe_x/images/fbLogin-Btn.png"></a> </div>
+                    <!-- fbLogin ends -->
+                    <div class="linkIn-Login"> <a href="#"><img src="/static/fringe_x/images/linkIn-Btn.png"></a> </div>
+                    <!-- fbLogin ends -->
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="" id="">
+                    I agree with Terms of service </div>
+                <div class="subWrap">
+                    <input type="submit" name="" id="" value="Submit">
+                </div>
+            </form>
+            <div class="frm-msg">
+                <h4>Welcome to FringeCircle!</h4>
+                <p>Please check your e-mail for registration link.</p>
+                <p>Do not forget to check your spam folders!</p>
+            </div>
+        </div>
+
+
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+
+
+
+
+<div class="overley-bg"></div>
+<!--popup-->
+
+</body>
+</html>

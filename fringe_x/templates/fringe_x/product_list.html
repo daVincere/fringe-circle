@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<!--[if IE 6]> <html class="no-js" id="ie6" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 7]> <html class="no-js" id="ie7" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 8]> <html class="no-js" id="ie8" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" dir="ltr" lang="en-US">
+<!--<![endif]-->
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>Fringe-X </title>
+    <!-- <link rel="shortcut icon" href="favicon.png" > -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5shiv-printshiv.js"></script>
+    <![endif]-->
+    <script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/fringe_x/js/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
+    <link href="/static/fringe_x/css/jquery-ui.css" rel="stylesheet">
+    <script src="/static/fringe_x/js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="/static/fringe_x/js/location_selection_logic.js"></script>
+    <script src="/static/fringe_x/js/custom.js"></script>
+    <script src="/static/fringe_x/js/ads_data.js"></script>
+    <script>
+$(document).ready(function(){
+  	$(".discList .discBlock:nth-child(2n)").addClass("even");
+
+  	$( "#accordion" ).accordion();
+
+	  $( "#dialog" ).dialog({
+		autoOpen: false,
+		width: 400,
+		buttons: [
+			{
+				text: "Ok",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			{
+				text: "Cancel",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		]
+	});
+
+
+	$( "#slider" ).slider({
+
+		range: true,
+		min:1000,
+		max:99999,
+		values: [ 10000, 40000 ],
+		create:function(even,ui){
+		$("#price_range").text( "Price :Rs" + ui.values[ 0 ] + " - Rs" + ui.values[ 1 ] );
+		},
+		slide:function(event,ui){
+		$("#price_range").text( "Price :Rs" + ui.values[ 0 ] + " - Rs" + ui.values[ 1 ] );
+		},
+		stop:function(event,ui){get_filter_ads_price(ui.values[0],ui.values[1],'{{ subcategory_name_context }}')},
+	});
+
+	$('.fRight').flexslider({
+		animation: 'slide',
+		animationLoop: 'true',
+		animationSpeed: 1000,
+		slideshow:true,
+		direction: "vertical", 
+		controlsContainer: '.flexslider'
+	});
+
+});
+
+{% if not location_state_context %}
+{% if not location_city_context %}
+
+$(document).ready(function()
+{
+	$(window).load(function()
+	{
+		$('body').addClass('hidden-body');
+		$('.overley-bg').show();
+		$('.disc-post,.find-locate').show()
+	});
+
+	$('.close-btn').on('click',function(){
+		$('body').removeClass('hidden-body');
+		$('.overley-bg').hide();
+		$('.disc-post,.find-locate').hide()
+	});
+});
+
+{% endif %}
+{% endif %}
+
+</script>
+    <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/responsive.css" />
+</head>
+<body>{% csrf_token %}
+<div class="wrapper">
+    <div class="header">
+        <div class="headTop">
+            <div class="container">
+                <!-- <div class="row" -->
+                <h1 class="logo"> <a href="/fringe_circle">Fringe-Circle</a> </h1>
+                <div class="topNav" id="home_location">
+                    <div class="hmLink" id="hmLink">
+                        <img width="22px"src="/static/fringe_x/images/location-white.png"/>
+                        {% if location_state_context %}
+                        {% if location_city_context %}
+                        {{ location_city_context }}  ({{ location_state_context }})
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    {% if current_user_context %}
+                    <div class="logBtns">
+                        <a href="#" id="signin" class="signBtn">Hi {{ current_user_context.name }}</a>
+                        <a href="/fringe_circle/logout/" id="regin" class="regBtn">Logout</a>
+                    </div>
+                    {% endif %}
+
+                    {% if not current_user_context %}
+                    <div class="socialIco"> <a href="#" class="fb" title="Facebook">Facebook</a> <a href="#" class="twit" title="twitter">Twitter</a> <a href="#" class="gPlus" title="Google Plus">Google Plus</a> <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>
+                    {% endif %}
+                </div>
+                <!-- topNav ends -->
+                <!-- </div> -->
+            </div>
+        </div>
+        <!-- headTop ends -->
+        <div class="headLinks">
+            <div class="container">
+                <div class="headCol active"> <a href="/fringe_circle/fringe_x/"><span><img src="/static/fringe_x/images/friX-icon.png" alt=""></span><span>Fringe-X</span></a> </div>
+                <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/friBoard-icon.png" alt=""></span><span>Fringe-Board</span></a> </div>
+                <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/friExp-icon.png" alt=""></span><span>Fringe-Exp</span></a> </div>
+                <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/deal-icon.png" alt=""></span><span>Fringe-Deal</span></a> </div>
+            </div>
+            <!-- headLinks ends -->
+        </div>
+        <!-- headLinks ends -->
+        <div class="headSearch">
+            <div class="container">
+                <form action="" method="">
+                    <div class="srcForm">
+                        <div class="selBox" id="popup">
+                            <select>
+                                <option>
+                                    {% if location_state_context %}
+                                    {% if location_city_context %}
+                                    {{ location_state_context }}>{{ location_city_context }}
+                                    {% endif %}
+                                    {% endif %}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="inBox">
+                            <input type="text" name="serKeyword" id="keyword" placeholder="Type your search here...">
+                            <input type="submit" name="search" value="seaach">
+                        </div>
+                    </div>
+                    <div class="postBtn"> <a href="/fringe_circle/post_ad/">Post Free Ads</a> </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="content">
+        <div class="container">
+            <!--<div class="adBlk">-->
+                <!--<div class="adCol1">-->
+                    <!--<div class="adBox"> <img src="/static/fringe_x/images/vidAd.jpg"> </div>-->
+                <!--</div>-->
+                <!--<div class="adCol2">-->
+                    <!--<div class="adBox"> <img src="/static/fringe_x/images/ad2.jpg"> </div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="categoryLst">
+                <div class="catHead">
+                    <div class="headLeft">
+                        {% if subcategory_obj_context %}
+                        <h2 class="head automob">
+            <span class="headIcon">
+                <a href="/fringe_circle/fringe_x/">
+                    <img src="{% static subcategory_obj_context.product_prime_category.icon_image_url %}">
+                </a>
+            </span>
+            <span class="headTxt">
+             <a href="/fringe_circle/fringe_x/">
+                 {{ subcategory_obj_context.product_prime_category.name }}
+             </a>
+            </span>
+                        </h2>
+                        <div class="breadcrumb">
+                            <ul>
+                                <li>
+                                    <a href="/fringe_circle/fringe_x/">
+                                        {{ subcategory_obj_context.product_prime_category.name }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/fringe_circle/product_list/{{ subcategory_obj_context.name }}">
+                                        {{ subcategory_obj_context.name }}
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        {% endif %}
+                        <!-- breadcrumb ends -->
+                    </div>
+                    <!-- headLeft ends -->
+                    <div class="headRht">
+                        <div class="catSort">
+                            <div class="viewCat">
+                <span>
+                    View as
+                </span>
+                                {% if subcategory_name_context %}
+                <span>
+                    <a href="/fringe_circle/product_grid/{{ subcategory_name_context }}/" class="gridIcon">
+                        Grid
+                    </a>
+                </span>
+
+                <span>
+                    <a href="/fringe_circle/product_list/{{ subcategory_name_context }}/" class="listIcon">
+                        List
+                    </a>
+                </span>
+                                {% else %}
+                <span>
+                    <a href="/fringe_circle/product_grid/" class="gridIcon">
+                        Grid
+                    </a>
+                </span>
+
+                <span>
+                    <a href="/fringe_circle/product_list/" class="listIcon">
+                        List
+                    </a>
+                </span>
+                                {% endif %}
+                            </div>
+                            <!-- viewCat ends -->
+                            <div class="sortSel">
+                                <select>
+                                    <option value="">Sort By</option>
+                                    <option onclick="get_filter_ads_sort('priceAsc','{{ subcategory_name_context }}');" style="cusror:pointer;">Price: Low to High</option>
+                                    <option onclick="get_filter_ads_sort('priceDsc','{{ subcategory_name_context }}');" style="cusror:pointer;">Price: High to Low</option>
+                                </select>
+                            </div>
+                            <!-- sortSel ends -->
+                            <div class="viewCatLst">
+                                <select>
+                                    {% if subcategories_list_context %}
+                                    {% for subcategory in subcategories_list_context %}
+                                    <option value=""><a href="/fringe_circle/product_list/{{ subcategory.name }}">{{ subcategory.name }}</a></option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                        </div>
+                        <!-- catSort ends -->
+                    </div>
+                    <!-- headRht ends -->
+                </div>
+                <!-- catHead ends -->
+                <div class="main">
+                    <div class="mainWrap">
+                        <form id="filter_search" name="filter_search" method="post" action="/fringe_circle/product_list/{{ subcategory_name_context }}/">{% csrf_token %}
+                            <div class="filterCol">
+                                <div id="accv ordion" class="custom">
+                                    {% if subcategory_filters_context %}
+                                    {% for subfilter in subcategory_filters_context %}
+                                    <h3>{{ subfilter.name }}</h3>
+                                    <div class="drnd-txt-box"><input name="" type="text"></div>
+                                    <div class="checkSel-scroll">
+
+                                        {% if subcategory_masters_dict_context %}
+
+                                        {% for subfilter_dict, submaster_dict in subcategory_masters_dict_context.items %}
+                                        {% ifequal subfilter subfilter_dict %}
+                                        {% for submaster in submaster_dict %}
+                                        <div class="checkSel">
+                                            <div class="check">
+                                                <input type="checkbox" name="{{ subfilter_dict.name }}" value="{{ submaster.value }}" id="subfilter" onclick="get_filter_ads(this,'{{ subcategory_name_context }}');">
+                                                {{ submaster.value }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% endifequal %}
+                                        {% endfor %}
+
+                                        {% endif %}
+                                        <!-- checkSel ends -->
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+
+                                    <h3 id="price_range">Price Range:Rs10000-40000</h3>
+                                    <div>
+                                        <div id="slider"></div>
+                                    </div>
+                                    {% if prime_category_filters_context %}
+                                    {% for primefilter in prime_category_filters_context %}
+                                    <h3>{{ primefilter.name }}</h3>
+                                    <!--<div class="drnd-txt-box"><input name="" type="text"></div>                -->
+                                    <div class="checkSel-scroll">
+                                        {% if prime_category_masters_dict_context %}
+
+                                        {% for prime_filter_dict, prime_master_dict in prime_category_masters_dict_context.items %}
+                                        {% ifequal primefilter prime_filter_dict %}
+                                        {% for prime_master in prime_master_dict %}
+
+                                        <div class="checkSel">
+                                            <div class="check">
+                                                <input type="checkbox" name="{{ prime_filter_dict.name }}" value="{{ prime_master.value }}" id="primefilter" onclick="get_filter_ads(this,'{{ subcategory_name_context }}');">
+                                                {{ prime_master.value }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% endifequal %}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                    <!-- checkSel ends -->
+
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    <h3>Locality</h3>
+                                    <div class="drnd-txt-box"><input name="" type="text"></div>
+                                    <div class="checkSel-scroll">
+                                        {% if all_localities_context %}
+                                        {% for locality in all_localities_context %}
+                                        <div class="checkSel">
+                                            <div class="check">
+                                                <input type="checkbox" name="locality_name" value="{{ locality.name_of_locality }}" id="locality_name" onclick="this.form.submit();">
+                                                {{ locality.name_of_locality }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+                                <!-- accordion ends -->
+                            </div>
+                            <!-- filterCol ends -->
+                        </form>
+                        <div class="catListing listView">
+                            <div id="catWrapElement" class="catWrap">
+                                {% if subcategory_ads_context %}
+                                {% for ad in subcategory_ads_context %}
+                                <div class="catItem">
+                                    <a href="/fringe_circle/ad/{{ ad.id }}/">
+                                        <div class="itemThumb">
+                                            <div class="lbl used">Used</div>
+                                            <img src="/static/fringe_x/images/no_photo_available.png">
+                                        </div>
+                                    </a>
+
+                                    <div class="grid-right" id="list_reply">
+                                        <span class="datef"><font class="snb_date">{{ ad.ad_post_duration }}</font></span>
+                                        <a href="#">Reply</a>
+
+                                    </div>
+                                    <!-- itemThumb end -->
+                                    <a href="/fringe_circle/ad/{{ ad.id }}/">
+                                        <div class="item-lst">
+                                            <div class="rs" style="text-decoration:none;color:#000;">
+                                                Rs.{{ ad.price }}
+                                            </div>
+                                            <!-- price ends -->
+                                            <div class="detailTxt">
+                                                <h3 class="proName">{{ ad.title }}</h3>
+                                                <p>
+                                                    {{ ad.description }}
+                                                </p>
+                                                <div class="grid-chicklet">
+                                                    <a href="#">{{ ad.subcategory }}</a>
+                                                    <a href="#">{{ ad.locality }}</a>
+                                                    <a href="#">{{ ad.city }}</a>
+                                                </div>
+                                                <div class="postTym">
+                                                </div>
+                                            </div>
+                                    </a>
+                                    <!-- detailTxt end -->
+                                </div>
+                                <!-- itemDetail ends -->
+                            </div>
+
+                            {% endfor %}
+                            {% endif %}
+
+                            {% if ads_list %}
+                            {% for ad in ads_list %}
+                            <div class="catItem">
+                                <a href="/fringe_circle/ad/{{ ad.id }}/">
+                                    <div class="itemThumb">
+                                        <div class="lbl used">Used</div>
+                                        <img src="/static/fringe_x/images/no_photo_available.png">
+                                    </div>
+                                </a>
+
+                                <div class="grid-right" id="list_reply">
+                                    <span class="datef"><font class="snb_date">{{ ad.ad_post_duration }}</font></span>
+                                    <a href="#">Reply</a>
+
+                                </div>
+                                <!-- itemThumb end -->
+                                <a href="/fringe_circle/ad/{{ ad.id }}/">
+                                    <div class="item-lst">
+                                        <div class="rs" style="text-decoration:none;color:#000;">
+                                            Rs.{{ ad.price }}
+                                        </div>
+                                        <!-- price ends -->
+                                        <div class="detailTxt">
+                                            <h3 class="proName">{{ ad.title }}</h3>
+                                            <p>
+                                                {{ ad.description }}
+                                            </p>
+                                            <div class="grid-chicklet">
+                                                <a href="#">{{ ad.subcategory }}</a>
+                                                <a href="#">{{ ad.locality }}</a>
+                                                <a href="#">{{ ad.posted_by }}</a>
+                                            </div>
+                                            <div class="postTym">
+                                            </div>
+                                        </div>
+                                </a>
+                                <!-- detailTxt end -->
+                            </div>
+                            <!-- itemDetail ends -->
+                        </div>
+
+                        {% endfor %}
+                        {% endif %}
+
+                    </div>
+                    <!-- catWrap ends -->
+                    <div class="pagination"> <a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> </div>
+                </div>
+                <!-- catListing ends -->
+                <div class="sideWidget">
+                    <div class="discList">
+                        <h2>Related Discussions</h2>
+                        <div class="discBlock">
+                            <div class="comWrap">
+                                <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                            </div>
+                            <!-- comWrap end -->
+                            <div class="comAuthor"> by Ted Mosby </div>
+                        </div>
+                        <div class="discBlock">
+                            <div class="comWrap">
+                                <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                            </div>
+                            <!-- comWrap end -->
+                            <div class="comAuthor"> by Ted Mosby </div>
+                        </div>
+                        <div class="discBlock">
+                            <div class="comWrap">
+                                <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                            </div>
+                            <!-- comWrap end -->
+                            <div class="comAuthor"> by Ted Mosby </div>
+                        </div>
+                        <div class="discBlock">
+                            <div class="comWrap">
+                                <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                            </div>
+                            <!-- comWrap end -->
+                            <div class="comAuthor"> by Ted Mosby </div>
+                        </div>
+                        <div class="discBlock">
+                            <div class="comWrap">
+                                <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                            </div>
+                            <!-- comWrap end -->
+                            <div class="comAuthor"> by Ted Mosby </div>
+                        </div>
+                    </div>
+                    <!-- discList ends -->
+                    <div class="relDeals">
+                        <h2>Related Deals</h2>
+                        <div class="deal-lst">
+                            <div class="dealItem">
+                                <div class="dealIcon">icon</div>
+                                <div class="dealDet">
+                                    <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                    <div class="dealDt"> 14 Nov, 2012 </div>
+                                </div>
+                            </div>
+                            <!-- dealItem end -->
+                            <div class="dealItem">
+                                <div class="dealIcon">icon</div>
+                                <div class="dealDet">
+                                    <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                    <div class="dealDt"> 14 Nov, 2012 </div>
+                                </div>
+                            </div>
+                            <!-- dealItem end -->
+                            <div class="dealItem">
+                                <div class="dealIcon">icon</div>
+                                <div class="dealDet">
+                                    <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                    <div class="dealDt"> 14 Nov, 2012 </div>
+                                </div>
+                            </div>
+                            <!-- dealItem end -->
+                            <div class="dealItem">
+                                <div class="dealIcon">icon</div>
+                                <div class="dealDet">
+                                    <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                    <div class="dealDt"> 14 Nov, 2012 </div>
+                                </div>
+                            </div>
+                            <!-- dealItem end -->
+                            <div class="dealItem">
+                                <div class="dealIcon">icon</div>
+                                <div class="dealDet">
+                                    <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                    <div class="dealDt"> 14 Nov, 2012 </div>
+                                </div>
+                            </div>
+                            <!-- dealItem end -->
+                            <div class="dealItem">
+                                <div class="dealIcon">icon</div>
+                                <div class="dealDet">
+                                    <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                    <div class="dealDt"> 14 Nov, 2012 </div>
+                                </div>
+                            </div>
+                            <!-- dealItem end -->
+                        </div>
+                        <!-- deal-lst end -->
+                    </div>
+                </div>
+                <!-- sideWidget ends -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- container ends -->
+</div>
+<!-- content ends -->
+<div class="footer">
+    <div class="sellStp">
+        <div class="container">
+            <h2>Everything sells in 5 simple steps!</h2>
+            <p>Consequat ipsum, nec sagittis sem nibh id elit.Consequat ipsum, nec sagittis sem nibh id elit.</p>
+            <img src="/static/fringe_x/images/postStp.png"> </div>
+        <!-- container ends -->
+    </div>
+    <div class="footTop">
+        <div class="container">
+            <div class="row">
+                <div class="footCol list">
+                    <h3>Popular Cities</h3>
+                    <ul class="lstCol first">
+                        <li><a href="#">Ahmdabad</a></li>
+                        <li><a href="#">Banglore</a></li>
+                        <li><a href="#">Chandigarh</a></li>
+                        <li><a href="#">Chennai</a></li>
+                        <li><a href="#">Coimbatore</a></li>
+                        <li><a href="#">Delhi</a></li>
+                        <li><a href="#">Gurgaon</a></li>
+                        <li><a href="#">Hyderabad</a></li>
+                    </ul>
+                    <ul class="lstCol">
+                        <li><a href="#">Ahmdabad</a></li>
+                        <li><a href="#">Banglore</a></li>
+                        <li><a href="#">Chandigarh</a></li>
+                        <li><a href="#">Chennai</a></li>
+                        <li><a href="#">Coimbatore</a></li>
+                        <li><a href="#">Delhi</a></li>
+                        <li><a href="#">Gurgaon</a></li>
+                        <li><a href="#">Hyderabad</a></li>
+                    </ul>
+                    <ul class="lstCol">
+                        <li><a href="#">Jipur</a></li>
+                        <li><a href="#">Kochi</a></li>
+                        <li><a href="#">Kolkata</a></li>
+                        <li><a href="#">Lucknow</a></li>
+                        <li><a href="#">Mumbai</a></li>
+                        <li><a href="#">Pune</a></li>
+                        <li><a href="#">All Cities</a></li>
+                    </ul>
+                </div>
+                <div class="footCol list two">
+                    <h3>Quick Links</h3>
+                    <ul class="lstCol first">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">All Cities</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Premium Ads</a></li>
+                        <li><a href="#">Videos</a></li>
+                        <li><a href="#">Advertise With Us</a></li>
+                    </ul>
+                    <ul class="lstCol">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">All Cities</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Premium Ads</a></li>
+                        <li><a href="#">Videos</a></li>
+                        <li><a href="#">Advertise With Us</a></li>
+                    </ul>
+                </div>
+                <div class="footCol">
+                    <h3>About Us</h3>
+                    <p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+
+                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+                </div>
+                <div class="footCol">
+                    <h3>Get In Touch</h3>
+                    <p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+
+                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+                    <div class="footCont">
+                        <div class="location">
+                            <p><span>icon</span><span>Moonshine Street No: 14/05<br>
+								Light City, Jupiter</span></p>
+                        </div>
+                        <div class="contNo"><p><span>icon</span><span>0247 541 65 87</span></p></div>
+                        <div class="mail"><p><span>icon</span><span><a href="mailto:support@longwave.com">support@longwave.com</a></span></p></div>
+
+                    </div>
+                </div>
+            </div>	<!-- row ends -->
+            <div class="footNav">
+                <ul>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Techology</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Entertainment</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Classifieds</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="footInfo">
+                <p>
+                    Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
+            </div>
+        </div>
+    </div>	<!-- footTop ends -->
+    <!--Footer Bottom-->
+    <div class="footBottom">
+        <div class="container">
+            <div class="fleft">
+                <div>Copyright © 2014 Company Name.</div>
+                <div class="footLnk"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="fRight">
+                <div class="footImg"><img src="/static/fringe_x/images/footImg.jpg" alt=""></div>
+                <div class="footTxt"><span>Lorem Ipsum</span> ut aliquam massa nisl quis neque. Suspendisse in orci enim, aliquam massa nisl quis neque. Suspendisse in orci enim.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--popup-->
+
+<!--Find Location-->
+
+
+<div class="find-locate">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <div class="overlayCont findLoc">
+            <div class="frmWrap">
+                <div class="inBox">
+                    <input type="text" name="serLoc" id="serLoc" placeholder="Search Location">
+                    <input type="submit" name="search" value="search">
+                </div>
+                <h2>Find Your Location</h2>
+                <hr>
+                <div class="frmContainer">
+                    <div class="cityLst">
+                        <h3 id="location_heading">Popular cities</h3>
+                        <div class="row" id="location_list">
+                            <ul>
+                                <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Agra">Agra</a></li>
+                                <li><a href="/fringe_circle/location_selection/Gujarat_Ahmedabad">Ahmedabad</a></li>
+                                <li><a href="/fringe_circle/location_selection/Karnataka_Bangalore">Bangalore</a></li>
+                                <li><a href="/fringe_circle/location_selection/Madhya Pradesh_Bhopal">Bhopal</a></li>
+                                <li><a href="/fringe_circle/location_selection/Tamil Nadu_Chennai">Chennai</a></li>
+                                <li><a href="/fringe_circle/location_selection/Delhi_Delhi">Delhi</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="/fringe_circle/location_selection/Andhra Pradesh_Hyderabad">Hyderabad</a></li>
+                                <li><a href="/fringe_circle/location_selection/Madhya Pradesh_Indore">Indore</a></li>
+                                <li><a href="/fringe_circle/location_selection/Rajasthan_Jaipur">Jaipur</a></li>
+                                <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Kanpur">Kanpur</a></li>
+                                <li><a href="/fringe_circle/location_selection/West Bengal_Kolkata">Kolkata</a></li>
+                                <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Lucknow">Lucknow</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="/fringe_circle/location_selection/Punjab_Amritsar">Amritsar</a></li>
+                                <li><a href="/fringe_circle/location_selection/Punjab_Ludhiana">Ludhiana</a></li>
+                                <li><a href="/fringe_circle/location_selection/Maharashtra_Mumbai">Mumbai</a></li>
+                                <li><a href="/fringe_circle/location_selection/Maharashtra_Nagpur">Nagpur</a></li>
+                                <li><a href="/fringe_circle/location_selection/Bihar_Patna">Patna</a></li>
+                                <li><a href="/fringe_circle/location_selection/Maharashtra_Pune">Pune</a></li>
+                            </ul>
+                            <ul>
+                                <li onclick="populate_state_list();" style="color:#fff;background-color:#1994d1; text-align:center;">view all</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- frmContainer ends -->
+            </div>
+            <!-- frmWrap ends -->
+        </div>
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+<!--Login-->
+
+<div class="login-popup">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <h1>I already have a account</h1>
+
+        <div class="frmContainer">
+
+            <h3>Sign In</h3>
+            <form action="" method="post">
+                <div class="frmRow">
+                    <input type="text" name="userId" id="userId" placeholder="Email / User ID">
+                </div>
+                <div class="frmRow">
+                    <input type="password" name="pswd" id="pswdaltEmail" placeholder="Password">
+                </div>
+                <div class="subWrap">
+                    <input type="submit" name="" id="" value="Submit">
+                </div>
+            </form>
+            <div class="frgPass"> <a href="#">Forgot your password?</a> </div>
+
+        </div>
+
+
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+<!--Sign Up-->
+
+<div class="register-popup">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <h1>Create new account</h1>
+
+        <div class="frmContainer">
+            <h3>Register</h3>
+            <form action="" method="post">
+                <div class="frmRow">
+                    <input type="email" name="workEmail" id="workEmail" placeholder="Work Email">
+                    <a href="#" class="quesIcon">question</a> </div>
+                <div class="frmRow">
+                    <input type="email" name="altEmail" id="altEmail" placeholder="Alternate Email">
+                    <a href="#" class="quesIcon">question</a> </div>
+                <div class="divider"><img src="images/signupDiv.png"></div>
+                <div class="loginOpt">
+                    <div class="fbLogin"> <a href="#"><img src="images/fbLogin-Btn.png"></a> </div>
+                    <!-- fbLogin ends -->
+                    <div class="linkIn-Login"> <a href="#"><img src="images/linkIn-Btn.png"></a> </div>
+                    <!-- fbLogin ends -->
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="" id="">
+                    I agree with Terms of service </div>
+                <div class="subWrap">
+                    <input type="submit" name="" id="" value="Submit">
+                </div>
+            </form>
+            <div class="frm-msg">
+                <h4>Welcome to FringeCircle!</h4>
+                <p>Please check your e-mail for registration link.</p>
+                <p>Do not forget to check your spam folders!</p>
+            </div>
+        </div>
+
+
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+
+
+
+
+<div class="overley-bg"></div>
+<!--popup-->
+</body>
+</html>

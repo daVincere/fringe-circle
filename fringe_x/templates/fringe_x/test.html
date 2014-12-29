@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="/fringe_circle/article_data/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <input type="text" name="title"/>
+    <input type="file" name="file_control"/>
+    <input type="submit" value="submit pic"/>
+</form>
+</body>
+</html>

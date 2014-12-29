@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	{% load staticfiles %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+	<title>Register Detail</title>
+	<script src="/static/fringe_x/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="/static/fringe_x/js/custom.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
+
+</head>
+
+<body>
+<div class="header">
+	<div class="headTop">
+		<div class="container">
+			<!-- <div class="row" -->
+			<h1 class="logo">
+				<a href="#/fringe_circle/">Fringe-Circle</a>
+			</h1>
+			<!--<div class="topNav">-->
+			<!--<div class="hmLink"><a href="#">Home</a></div>-->
+			<!--<div class="logBtns">-->
+			<!--<a href="#" class="signBtn">Sign In</a>-->
+			<!--<a href="#" class="regBtn">Register</a>-->
+			<!--</div>-->
+			<!--<div class="socialIco">-->
+			<!--<a href="#" class="fb" title="Facebook">Facebook</a>-->
+			<!--<a href="#" class="twit" title="twitter">Twitter</a>-->
+			<!--<a href="#" class="gPlus" title="Google Plus">Google Plus</a>-->
+			<!--<a href="#" class="lkIn" title="Linked In">Linked In</a>-->
+			<!--</div>-->
+			<!--</div> &lt;!&ndash; topNav ends &ndash;&gt;-->
+			<!-- </div> -->
+		</div>
+	</div> <!-- headTop ends -->
+	<div class="headLinks">
+		<div class="container">
+			<div class="headCol">
+				<a href="/fringe_circle/fringe_x/"><span><img src="/static/fringe_x/images/friX-icon.png" alt=""></span><span>Fringe-X</span></a>
+			</div>
+			<div class="headCol">
+				<a href="/fringe_circle/fringe_board/all/"><span><img src="/static/fringe_x/images/friBoard-icon.png" alt=""></span><span>Fringe-Board</span></a>
+			</div>
+			<div class="headCol">
+				<a href="#"><span><img src="/static/fringe_x/images/friExp-icon.png" alt=""></span><span>Fringe-Exp</span></a>
+			</div>
+			<div class="headCol">
+				<a href="#"><span><img src="/static/fringe_x/images/deal-icon.png" alt=""></span><span>Fringe-Deal</span></a>
+			</div>
+		</div> <!-- headLinks ends -->
+	</div> <!-- headLinks ends -->
+	<div class="container">
+		<div class="post-bx">
+			<form id="user_registration_form" name="user_registration_form" method="POST" action="/fringe_circle/register_user_db/{{ registration_token_context }}/">{% csrf_token %}
+				<h2 class="register"><span class="login_icon">&nbsp;</span>REGISTER DETAIL</h2>
+				<div class="post-bx-inner">
+					<div class="post-bx-col">
+						<input name="fullname" type="text" class="post-f-bx" placeholder="Full Name" />
+						<span id="pass_error" style="color:red;"></span>
+						<input id="firstPass" name="firstPass" type="password" class="post-f-bx" placeholder="Password" />
+						<input id="secondPass" name="secondPass" type="password" class="post-f-bx" placeholder="Re-Type Password" onblur="validate_user_password();"/>
+
+						<div class="list-dropdown"><select id="city_select_alert" name="city_select_alert" onchange="populate_locality_alert(this.options[this.selectedIndex].value);">
+
+							<option>Select City</option>
+						</select></div>
+
+					</div>
+					<div class="post-bx-col last">
+
+						<input name="work_email" type="text" class="post-f-bx" value="{{ work_email_context }}" />
+
+
+						<input name="alt_email" type="text" class="post-f-bx" value="{{ alt_email_context }}" />
+
+
+						<div class="list-dropdown"><select name="state_select_alert" onchange="populate_city_alert(this.options[this.selectedIndex].value);">
+
+							<option>Select State</option>
+							{% if states_context %}
+							{% for state in states_context %}
+							<option value="{{ state }}" >{{ state }}</option>
+							{% endfor %}
+							{% endif %}
+						</select></div>
+						<div class="list-dropdown">
+							<select id="locality_select_alert" name="locality_select_alert" >
+							<option>Select Locality</option>
+						</select></div>
+					</div>
+					<input name="" type="text" class="post-f-bx" placeholder="How did you know about us?" />
+					<div class="post-btn-row">
+						<div class="postBtn">
+							<input type="submit" value="submit"/>
+						</div>
+					</div>
+				</div>
+				</form>
+
+				<div class="clearfx"></div>
+
+
+		</div>
+	</div>
+</div>
+</div>
+<div class="footTop">
+	<div class="container">
+		<div class="row">
+			<div class="footCol list">
+				<h3>Popular Cities</h3>
+				<ul class="lstCol first">
+					<li><a href="#">Ahmdabad</a></li>
+					<li><a href="#">Banglore</a></li>
+					<li><a href="#">Chandigarh</a></li>
+					<li><a href="#">Chennai</a></li>
+					<li><a href="#">Coimbatore</a></li>
+					<li><a href="#">Delhi</a></li>
+					<li><a href="#">Gurgaon</a></li>
+					<li><a href="#">Hyderabad</a></li>
+				</ul>
+				<ul class="lstCol">
+					<li><a href="#">Ahmdabad</a></li>
+					<li><a href="#">Banglore</a></li>
+					<li><a href="#">Chandigarh</a></li>
+					<li><a href="#">Chennai</a></li>
+					<li><a href="#">Coimbatore</a></li>
+					<li><a href="#">Delhi</a></li>
+					<li><a href="#">Gurgaon</a></li>
+					<li><a href="#">Hyderabad</a></li>
+				</ul>
+				<ul class="lstCol">
+					<li><a href="#">Jipur</a></li>
+					<li><a href="#">Kochi</a></li>
+					<li><a href="#">Kolkata</a></li>
+					<li><a href="#">Lucknow</a></li>
+					<li><a href="#">Mumbai</a></li>
+					<li><a href="#">Pune</a></li>
+					<li><a href="#">All Cities</a></li>
+				</ul>
+			</div>
+			<div class="footCol list two">
+				<h3>Quick Links</h3>
+				<ul class="lstCol first">
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Contact Us</a></li>
+					<li><a href="#">Careers</a></li>
+					<li><a href="#">All Cities</a></li>
+					<li><a href="#">Help</a></li>
+					<li><a href="#">Premium Ads</a></li>
+					<li><a href="#">Videos</a></li>
+					<li><a href="#">Advertise With Us</a></li>
+				</ul>
+				<ul class="lstCol">
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Contact Us</a></li>
+					<li><a href="#">Careers</a></li>
+					<li><a href="#">All Cities</a></li>
+					<li><a href="#">Help</a></li>
+					<li><a href="#">Premium Ads</a></li>
+					<li><a href="#">Videos</a></li>
+					<li><a href="#">Advertise With Us</a></li>
+				</ul>
+			</div>
+			<div class="footCol">
+				<h3>About Us</h3>
+				<p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+
+				<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+			</div>
+			<div class="footCol">
+				<h3>Get In Touch</h3>
+				<p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+
+				<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+				<div class="footCont">
+					<div class="location">
+						<p><span>icon</span><span>Moonshine Street No: 14/05<br>
+								Light City, Jupiter</span></p>
+					</div>
+					<div class="contNo"><p><span>icon</span><span>0247 541 65 87</span></p></div>
+					<div class="mail"><p><span>icon</span><span><a href="mailto:support@longwave.com">support@longwave.com</a></span></p></div>
+
+				</div>
+			</div>
+		</div>	<!-- row ends -->
+		<div class="footNav">
+			<ul>
+				<li><a href="#">News</a></li>
+				<li><a href="#">Sports</a></li>
+				<li><a href="#">Techology</a></li>
+				<li><a href="#">Business</a></li>
+				<li><a href="#">Movies</a></li>
+				<li><a href="#">Entertainment</a></li>
+				<li><a href="#">Culture</a></li>
+				<li><a href="#">Books</a></li>
+				<li><a href="#">Classifieds</a></li>
+				<li><a href="#">Blogs</a></li>
+			</ul>
+		</div>
+		<div class="footInfo">
+			<p>
+				Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
+		</div>
+	</div>
+</div>	<!-- footTop ends -->
+<!--Footer Bottom-->
+<div class="footBottom">
+	<div class="container">
+		<div class="fleft">
+			<div>Copyright © 2014 Company Name.</div>
+			<div class="footLnk"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a>
+			</div>
+		</div>
+		<div class="fRight">
+			<div class="footImg"><img src="/static/fringe_x/images/footImg.jpg" alt=""></div>
+			<div class="footTxt"><span>Lorem Ipsum</span> ut aliquam massa nisl quis neque. Suspendisse in orci enim, aliquam massa nisl quis neque. Suspendisse in orci enim.
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

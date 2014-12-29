@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!--[if IE 6]> <html class="no-js" id="ie6" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 7]> <html class="no-js" id="ie7" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 8]> <html class="no-js" id="ie8" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" dir="ltr" lang="en-US">
+<!--<![endif]-->
+<head>
+	{% load staticfiles %}
+	{% csrf_token %}
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+	<title>Fringe-X</title>
+	<!-- <link rel="shortcut icon" href="favicon.png" > -->
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/html5shiv-printshiv.js"></script>
+	<![endif]-->
+	<script src="/static/fringe_discussion/js/jquery-1.9.1.min.js"></script>
+	<script src="/static/fringe_discussion/js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="/static/fringe_discussion/js/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/fringe_discussion/css/style.css" />
+	<link href="/static/fringe_discussion/css/jquery-ui.css" rel="stylesheet">
+	<script src="/static/fringe_discussion/js/jquery.flexslider-min.js" type="text/javascript"></script>
+	<script src="/static/fringe_discussion/js/custom.js"></script>
+	<script src="/static/fringe_discussion/js/jquery.autosize.js"></script>
+
+	<script>
+$(document).ready(function(){
+$('textarea').autosize();
+  	$(".discList .discBlock:nth-child(2n)").addClass("even");
+
+  	$( "#accordion" ).accordion();
+
+	  $( "#dialog" ).dialog({
+		autoOpen: false,
+		width: 400,
+		buttons: [
+			{
+				text: "Ok",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			{
+				text: "Cancel",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		]
+	});
+
+
+	$( "#slider" ).slider({
+		range: true,
+		values: [ 17, 67 ]
+	});
+
+	$('.fRight').flexslider({
+		animation: 'slide',
+		animationLoop: 'true',
+		animationSpeed: 1000,
+		slideshow:true,
+		direction: "vertical", 
+		controlsContainer: '.flexslider'
+	});
+
+});
+
+</script>
+	<link rel="stylesheet" type="text/css" href="/static/fringe_discussion/css/responsive.css" />
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<div class="headTop">
+			<div class="container">
+				<!-- <div class="row" -->
+				<h1 class="logo"> <a href="/fringe_circle/">Fringe-Circle</a> </h1>
+				<div class="topNav">
+					<div class="hmLink"><a href="#">Home</a></div>
+					{% if current_user_context %}
+					<div class="logBtns">
+						<a href="#" id="signin" class="signBtn">Hi {{ current_user_context.name }}</a>
+						<a href="/fringe_circle/logout/" id="regin" class="regBtn">Logout</a>
+					</div>
+					{% endif %}
+					{% if not current_user_context %}
+					<div class="socialIco"> <a href="#" class="fb" title="Facebook">Facebook</a> <a href="#" class="twit" title="twitter">Twitter</a> <a href="#" class="gPlus" title="Google Plus">Google Plus</a> <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>
+					{% endif %}
+				</div>
+				<!-- topNav ends -->
+				<!-- </div> -->
+			</div>
+		</div>
+		<!-- headTop ends -->
+		<div class="headLinks">
+			<div class="container">
+				<div class="headCol"> <a href="/fringe_circle/fringe_x/"><span><img src="/static/fringe_discussion/images/friX-icon.png" alt=""></span><span>Fringe-X</span></a> </div>
+				<div class="headCol"> <a href="fringe_circle/fringe_board/"><span><img src="/static/fringe_discussion/images/friBoard-icon.png" alt=""></span><span>Fringe-Board</span></a> </div>
+				<div class="headCol"> <a href="#"><span><img src="/static/fringe_discussion/images/friExp-icon.png" alt=""></span><span>Fringe-Exp</span></a> </div>
+				<div class="headCol"> <a href="#"><span><img src="/static/fringe_discussion/images/deal-icon.png" alt=""></span><span>Fringe-Deal</span></a> </div>
+			</div>
+			<!-- headLinks ends -->
+		</div>
+		<!-- headLinks ends -->
+		<div class="headSearch">
+			<div class="container">
+				<form action="" method="">
+					<div class="srcForm frg-serch">
+						<div id="popup" class="selBox">
+							<select>
+								<option>
+									Find Location
+								</option>
+							</select>
+						</div>
+						<div class="inBox frige-box" id="popup2">
+							<input type="text" name="serKeyword" id="keyword" placeholder="What your discussion?">
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- header ends -->
+	<div class="content">
+		<div class="container">
+			<div class="categoryLst">
+				<div class="catHead">
+					<div class="headLeft">
+						{% if discussion_obj_context %}
+						<a href="/fringe_circle/fringe_board/all/" class="headTxt">All</a><span class="headTxt space">></span><a href="#" class="headTxt">{{ discussion_obj_context.category.name }}</a><span class="headTxt space">></span><a href="#" class="headTxt">{{ discussion_obj_context.subcategory.name }}</a><span class="headTxt space">></span><span class="orange"></span>
+						{% endif %}
+
+						<!-- breadcrumb ends -->
+					</div>
+					<!-- headLeft ends -->
+
+					<!-- headRht ends -->
+				</div>
+				<!-- catHead ends -->
+				<div class="main">
+					<div class="mainWrap">
+
+
+						<!-- filterCol ends -->
+						<div class="catListing listView individual">
+							<div class="catWrap">
+								<!--First-box-->
+
+								<!--Second-box-->
+								{% if discussion_obj_context %}
+								<div id="disc-div-main" class="fringe-disc">
+									<div class="fringe-disc-row">
+										<div class="fringe-user"> <img src="/static/fringe_discussion/images/fri-user.png"> </div>
+										<div class="fringe-chat">
+											<div class="fring-social"> <a href="#" class="fb"></a> <a href="#" class="gt"></a> <a href="#" class="twttr"></a> </div>
+											<h2>{{ discussion_obj_context.title }}</h2>
+											<div class="fringe-month">{{ discussion_obj_context.user.name }} posted  -  {{discussion_obj_context.category.name}}:{{ discussion_obj_context.subcategory.name }} - {{ discussion_obj_context.publish_date }}</div>
+										</div>
+									</div>
+
+									<p>{{ discussion_obj_context.description }}</p>
+									<!--<div class="fringe-ans">Answer this discussion</div>-->
+									<textarea id="text_{{ discussion_obj_context.id }}" placeholder="Reply this question" style="width:90%;"></textarea>
+									<span class="main-disc-reply-btn" onclick="post_reply('text_{{ discussion_obj_context.id }}','{{ discussion_obj_context.id }}');">Reply</span>
+									<div class="sprit-icon">
+										<span class="cal">
+											{{ discussion_obj_context.publish_date }}
+										</span>
+										<span class="ans">
+											{{ discussion_obj_context.answers_count }}
+										</span>
+										<span class="rep">Reply</span>
+										<span id="like_{{ discussion_obj_context.id }}" class="like" onclick="get_likes_dislikes('like','{{ discussion_obj_context.id }}');" style="cursor:pointer;">
+											{{ discussion_obj_context.like_count }} Like
+										</span>
+										<span id="unlike_{{ discussion_obj_context.id }}" class="unlike" onclick="get_likes_dislikes('unlike','{{ discussion_obj_context.id }}');" style="cursor:pointer;">
+											{{ discussion_obj_context.unlike_count }} Unlike
+										</span> <span class="foll">Follow</span> <span class="share">Share</span> </div>
+
+									<div class="indi-dropdown"><div class="list-dropdown"><select name="">
+
+										<option>Report as</option>
+									</select></div>
+									</div>
+									{% if replies_context %}
+									{% for reply in replies_context %}
+									<div class="disc-name">
+										<div class="user-disc-name">
+											<span class="datef"><font class="snb_date">6 minutes ago</font></span>
+											<div class="dis-name">{{ reply.user.name }}</div>
+											<div class="dis-rply"><img src="/static/fringe_discussion/images/disc-rply.png"></div>
+											<div class="dis-name">{{ discussion_obj_context.user.name }}</div>
+										</div>
+
+										<p>{{ reply.text }}</p>
+									</div>
+									<div class="sprit-icon">
+										<span class="cal">21 Oct 2014</span>
+										<!--<span class="ans">-->
+											<!--12 Answer]]]-->
+										<!--</span>-->
+										<!--<span class="rep">-->
+											<!--Reply-->
+										<!--</span>-->
+										<span class="like" id="like_{{ reply.id }}" onclick="get_likes_dislikes_reply('like','{{ reply.id }}');">
+											{{ reply.like_count }} Likes
+										</span>
+										<span class="unlike" id="unlike_{{ reply.id }}" onclick="get_likes_dislikes_reply('unlike','{{ reply.id }}');">
+											{{ reply.unlike_count }} Unlikes
+										</span>
+										<!--<span class="foll">-->
+											<!--Follow-->
+										<!--</span>-->
+										<!--<span class="share">-->
+											<!--Share-->
+										<!--</span>-->
+									</div>
+									<!--<textarea style="width:100%;">-->
+									<!--</textarea>-->
+									<!--<span class="main-disc-reply-btn">Reply</span>-->
+									{% endfor %}
+									{% endif %}
+
+									<!--<div class="offset-disc">-->
+										<!--<div class="disc-name">-->
+											<!--<div class="user-disc-name">-->
+												<!--<span class="datef"><font class="snb_date">6 minutes ago</font></span>-->
+												<!--<div class="dis-name">Rahul</div>-->
+												<!--<div class="dis-rply"><img src="/static/fringe_discussion/images/disc-rply.png"></div>-->
+												<!--<div class="dis-name">Annett</div>-->
+											<!--</div>-->
+
+											<!--<p>Aliquam viverra quam eu erat rhoncus adipisc. Quisque viverra sem id quamir imperdiet et dictum metus. Fusce pellentesque vulputate nisi semper accumsan. Proin leo nibh, scelerisque quis vehicula intep kemry, pellentesque et nunc etrapuqe at semper leo, negue sed.</p>-->
+										<!--</div>-->
+										<!--<div class="sprit-icon"> <span class="cal">21 Oct 2014</span> <span class="ans">12 Answer</span> <span class="rep">Reply</span> <span class="like">2 Like</span> <span class="unlike">0 Unlike</span> <span class="foll">Follow</span> <span class="share">Share</span> </div>-->
+										<!--<textarea style="width:100%;"></textarea>-->
+										<!--<span style="float:right;">Reply</span>-->
+
+
+									<!--</div>-->
+
+
+
+									<!--<div class="individual-relate-disc">-->
+										<!--<div class="nxt-disc">-->
+											<!--<span class="prev"></span>-->
+											<!--<span class="next"></span>-->
+										<!--</div>-->
+										<!--<h3>Related discussion</h3>-->
+
+										<!--<h4>What's the best cell phone?</h4>-->
+										<!--<p>Lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>-->
+
+										<!--<h4>What's the best cell phone?</h4>-->
+										<!--<p>Lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>-->
+
+
+										<!--<h4>What's the best cell phone?</h4>-->
+										<!--<p>Lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>-->
+
+
+										<!--<h4>What's the best cell phone?</h4>-->
+										<!--<p>Lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>-->
+
+									<!--</div>-->
+
+
+								</div>
+								{% endif %}
+
+								<!--First-box-->
+
+
+								<!--Second-box-->
+
+							</div>
+							<div class="white-space"></div>
+							<!-- catWrap ends -->
+							<div class="pagination"> <a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> </div>
+						</div>
+						<!-- catListing ends -->
+						<div class="sideWidget">
+							<div class="custom">
+								<h3>Popular Discussion</h3>
+							</div>
+							<!-- discList ends -->
+							<div class="relDeals">
+								<div class="deal-lst">
+									<div class="dealItem">
+										<div class="dealDet">
+											<p>&nbsp;</p>																				<p>What's the easiest way to learn how to play a piano?</p>
+											<div class="dealDt">jimmyJeffers Asked - 400 Answers</div>
+										</div>
+
+										<div class="dealDet">
+											<p>What's the easiest way to learn how to play a piano?</p>
+											<div class="dealDt">jimmyJeffers Asked - 400 Answers</div>
+										</div>
+										<div class="dealDet">
+											<p>What's the easiest way to learn how to play a piano?</p>
+											<div class="dealDt">jimmyJeffers Asked - 400 Answers</div>
+										</div>																</div>
+
+									<div class="related">
+										<h3>Related Ads</h3>
+
+										<div class="itemThumb">
+											<div class="lbl used">Used</div>
+											<img src="images/proThumb.jpg"> </div>
+
+										<div class="brand-row">
+											<a href="#" class="relate-rs">35,000/-</a>
+											<span class="brand-name">Nokia Lumia</span>
+											<span class="date-brd">Today, 15:02</span>
+										</div>
+									</div>
+
+									<div class="related deal">
+										<h3>Related Deals</h3>
+
+										<div class="dealDet">
+											<div class="del-relate-img"><img src="/static/fringe_discussion/images/dealIcon.png"></div>
+											<div class="deal-rltd">																		<p>What's the easiest way to learn how to play a piano?</p>
+												<div class="dealDt">14 Nov, 2012 </div>
+											</div>
+										</div>
+
+										<div class="dealDet">
+											<div class="del-relate-img"><img src="/static/fringe_discussion/images/dealIcon.png"></div>
+											<div class="deal-rltd">																		<p>What's the easiest way to learn how to play a piano?</p>
+												<div class="dealDt">14 Nov, 2012 </div>
+											</div>
+										</div>
+
+
+										<div class="dealDet">
+											<div class="del-relate-img"><img src="/static/fringe_discussion/images/dealIcon.png"></div>
+											<div class="deal-rltd">																		<p>What's the easiest way to learn how to play a piano?</p>
+												<div class="dealDt">14 Nov, 2012 </div>
+											</div>
+										</div>
+
+										<div class="dealDet">
+											<div class="del-relate-img"><img src="/static/fringe_discussion/images/dealIcon.png"></div>
+											<div class="deal-rltd">																		<p>What's the easiest way to learn how to play a piano?</p>
+												<div class="dealDt">14 Nov, 2012 </div>
+											</div>
+										</div>
+									</div>											<!-- dealItem end -->
+
+									<!-- dealItem end -->
+
+									<!-- dealItem end --><!-- dealItem end -->
+
+									<!-- dealItem end --><!-- dealItem end -->
+								</div>
+								<!-- deal-lst end -->
+							</div>
+						</div>
+						<!-- sideWidget ends -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- container ends -->
+	</div>
+	<div class="container top-offset">
+		<div class="linkBox">
+			<div class="boxCol ad">
+				<div class="adLnk">
+					<img src="/static/fringe_discussion/images/google.jpg">
+				</div>
+			</div>
+			<!-- twitPost ends -->
+			<div class="boxCol ad">
+				<div class="adLnk">
+					<img src="/static/fringe_discussion/images/add-3.jpg">
+				</div>
+			</div>
+			<!-- popCat ends -->
+			<div class="boxCol ad">
+				<div class="adLnk"> <img src="/static/fringe_discussion/images/add-4.jpg"> </div>
+			</div>
+			<!-- vidLnk ends -->
+		</div>
+	</div>
+	<!-- content ends -->
+	<div class="footer">
+		<div class="footTop">
+			<div class="container">
+				<div class="row">
+					<div class="footCol list">
+						<h3>Popular Cities</h3>
+						<ul class="lstCol first">
+							<li><a href="#">Ahmdabad</a></li>
+							<li><a href="#">Banglore</a></li>
+							<li><a href="#">Chandigarh</a></li>
+							<li><a href="#">Chennai</a></li>
+							<li><a href="#">Coimbatore</a></li>
+							<li><a href="#">Delhi</a></li>
+							<li><a href="#">Gurgaon</a></li>
+							<li><a href="#">Hyderabad</a></li>
+						</ul>
+						<ul class="lstCol">
+							<li><a href="#">Ahmdabad</a></li>
+							<li><a href="#">Banglore</a></li>
+							<li><a href="#">Chandigarh</a></li>
+							<li><a href="#">Chennai</a></li>
+							<li><a href="#">Coimbatore</a></li>
+							<li><a href="#">Delhi</a></li>
+							<li><a href="#">Gurgaon</a></li>
+							<li><a href="#">Hyderabad</a></li>
+						</ul>
+						<ul class="lstCol">
+							<li><a href="#">Jipur</a></li>
+							<li><a href="#">Kochi</a></li>
+							<li><a href="#">Kolkata</a></li>
+							<li><a href="#">Lucknow</a></li>
+							<li><a href="#">Mumbai</a></li>
+							<li><a href="#">Pune</a></li>
+							<li><a href="#">All Cities</a></li>
+						</ul>
+					</div>
+					<div class="footCol list two">
+						<h3>Quick Links</h3>
+						<ul class="lstCol first">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Contact Us</a></li>
+							<li><a href="#">Careers</a></li>
+							<li><a href="#">All Cities</a></li>
+							<li><a href="#">Help</a></li>
+							<li><a href="#">Premium Ads</a></li>
+							<li><a href="#">Videos</a></li>
+							<li><a href="#">Advertise With Us</a></li>
+						</ul>
+						<ul class="lstCol">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Contact Us</a></li>
+							<li><a href="#">Careers</a></li>
+							<li><a href="#">All Cities</a></li>
+							<li><a href="#">Help</a></li>
+							<li><a href="#">Premium Ads</a></li>
+							<li><a href="#">Videos</a></li>
+							<li><a href="#">Advertise With Us</a></li>
+						</ul>
+					</div>
+					<div class="footCol">
+						<h3>About Us</h3>
+						<p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+					</div>
+					<div class="footCol">
+						<h3>Get In Touch</h3>
+						<p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+						<div class="footCont">
+							<div class="location">
+								<p><span>icon</span><span>Moonshine Street No: 14/05<br>
+																Light City, Jupiter</span></p>
+							</div>
+							<div class="contNo">
+								<p><span>icon</span><span>0247 541 65 87</span></p>
+							</div>
+							<div class="mail">
+								<p><span>icon</span><span><a href="mailto:support@longwave.com">support@longwave.com</a></span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- row ends -->
+				<div class="footNav">
+					<ul>
+						<li><a href="#">News</a></li>
+						<li><a href="#">Sports</a></li>
+						<li><a href="#">Techology</a></li>
+						<li><a href="#">Business</a></li>
+						<li><a href="#">Movies</a></li>
+						<li><a href="#">Entertainment</a></li>
+						<li><a href="#">Culture</a></li>
+						<li><a href="#">Books</a></li>
+						<li><a href="#">Classifieds</a></li>
+						<li><a href="#">Blogs</a></li>
+					</ul>
+				</div>
+				<div class="footInfo">
+					<p> Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
+				</div>
+			</div>
+		</div>
+		<!-- footTop ends -->
+		<!--Footer Bottom-->
+		<div class="footBottom">
+			<div class="container">
+				<div class="fleft">
+					<div>Copyright © 2014 Company Name.</div>
+					<div class="footLnk"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a> </div>
+				</div>
+				<div class="fRight">
+					<div class="footImg"><img src="/static/fringe_discussion/images/footImg.jpg" alt=""></div>
+					<div class="footTxt"><span>Lorem Ipsum</span> ut aliquam massa nisl quis neque. Suspendisse in orci enim, aliquam massa nisl quis neque. Suspendisse in orci enim. </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--popup-->
+
+	<!--Find Location-->
+
+	<div class="find-locate">
+		<div class="disc-post-wr"> <span class="close-btn">x</span>
+			<div class="overlayCont findLoc">
+				<div class="frmWrap">
+					<div class="inBox">
+						<input type="text" name="serLoc" id="serLoc" placeholder="Search Location">
+						<input type="submit" name="search" value="search">
+					</div>
+					<h2>Find Your Location</h2>
+					<hr>
+					<div class="frmContainer">
+						<div class="cityLst">
+							<h3>Popular cities</h3>
+							<div class="row">
+								<ul>
+									<li>Agra</li>
+									<li>Ahmedabad</li>
+									<li>Bangalore</li>
+									<li>Bhopal</li>
+									<li>Chennai</li>
+									<li>Delhi</li>
+								</ul>
+								<ul>
+									<li>Hyderabad</li>
+									<li>Indore</li>
+									<li>Jaipur</li>
+									<li>Kanpur</li>
+									<li>Kolkata</li>
+									<li>Lucknow</li>
+								</ul>
+								<ul>
+									<li>Lucknow</li>
+									<li>Ludhiana</li>
+									<li>Mumbai</li>
+									<li>Nagpur</li>
+									<li>Patna</li>
+									<li>Pune</li>
+								</ul>
+								<ul>
+									<li>Lucknow</li>
+									<li>Ludhiana</li>
+									<li>Mumbai</li>
+									<li>Nagpur</li>
+									<li>Patna</li>
+									<li>Pune</li>
+								</ul>
+							</div>
+						</div>
+						<div class="cityLst">
+							<h3>Popular cities</h3>
+							<div class="row">
+								<ul>
+									<li>Agra</li>
+									<li>Ahmedabad</li>
+									<li>Bangalore</li>
+									<li>Bhopal</li>
+									<li>Chennai</li>
+									<li>Delhi</li>
+								</ul>
+								<ul>
+									<li>Hyderabad</li>
+									<li>Indore</li>
+									<li>Jaipur</li>
+									<li>Kanpur</li>
+									<li>Kolkata</li>
+									<li>Lucknow</li>
+								</ul>
+								<ul>
+									<li>Lucknow</li>
+									<li>Ludhiana</li>
+									<li>Mumbai</li>
+									<li>Nagpur</li>
+									<li>Patna</li>
+									<li>Pune</li>
+								</ul>
+								<ul>
+									<li>Lucknow</li>
+									<li>Ludhiana</li>
+									<li>Mumbai</li>
+									<li>Nagpur</li>
+									<li>Patna</li>
+									<li>Pune</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- frmContainer ends -->
+				</div>
+				<!-- frmWrap ends -->
+			</div>
+			<div class="clearfx"></div>
+		</div>
+	</div>
+
+	<!--Discussion form-->
+	<div class="disc-post">
+		<div class="disc-post-wr">
+			<span class="close-btn">x</span>
+			<div class="row">
+				<label class="close">Your Discussion</label>
+
+				<input type="text" placeholder="Type your discussion?" class="post-f-bx" name="">
+
+
+			</div>
+			<div class="row">
+				<div class="post-bx-col">
+
+					<label>Select Category</label>
+					<div class="list-dropdown"><select name="">
+
+						<option>Select category</option>
+					</select></div>
+				</div>
+
+				<div class="post-bx-col last">
+					<label>Select Sub-Category</label>
+					<div class="list-dropdown"><select name="">
+
+						<option>Select sub-category</option>
+					</select></div></div>
+			</div>
+
+			<div class="row">
+				<div class="post-bx-col">
+
+					<label>Select Category</label>
+					<div class="post-f-bx">
+						<div class="rdio-col first">Is your discussion location specific.</div>
+						<div class="rdio-col active"><span><input type="radio" value="" name=""></span>Yes</div>
+						<div class="rdio-col"><span><input type="radio" value="" name=""></span>No</div>
+					</div>
+
+
+					<div class="list-dropdown"><select name="">
+
+						<option>City</option>
+					</select></div>
+
+					<div class="list-dropdown"><select name="">
+
+						<option>State</option>
+					</select></div>
+					<div class="list-dropdown"><select name="">
+
+						<option>Locality</option>
+					</select></div>
+				</div>
+
+				<div class="post-bx-col last">
+					<label>Select Sub-Category</label>
+					<textarea rows="" class="post-f-bx" cols="" name="">Add detail...</textarea></div>
+			</div>
+
+			<div class="post-btn-row">
+				<div class="postBtn"><input name="" value="SUBMIT" type="submit">
+
+				</div>
+			</div>
+			<div class="clearfx"></div>
+
+
+		</div>
+	</div>
+	<div class="overley-bg"></div>
+	<!--popup-->
+</body>
+</html>

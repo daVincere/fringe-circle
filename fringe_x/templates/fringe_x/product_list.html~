@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<!--[if IE 6]> <html class="no-js" id="ie6" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 7]> <html class="no-js" id="ie7" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 8]> <html class="no-js" id="ie8" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" dir="ltr" lang="en-US">
+<!--<![endif]-->
+<head>
+    {% load staticfiles %}
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<title>Fringe-X : {{ subcategory_name_context }}
+
+</title>
+<!-- <link rel="shortcut icon" href="favicon.png" > -->
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5shiv-printshiv.js"></script>
+<![endif]-->
+<script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
+<script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/fringe_x/js/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
+<link href="/static/fringe_x/css/jquery-ui.css" rel="stylesheet">
+<script src="/static/fringe_x/js/jquery.flexslider-min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+  	$(".discList .discBlock:nth-child(2n)").addClass("even");
+
+  	$( "#accordion" ).accordion();
+
+	  $( "#dialog" ).dialog({
+		autoOpen: false,
+		width: 400,
+		buttons: [
+			{
+				text: "Ok",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			{
+				text: "Cancel",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		]
+	});
+
+
+	$( "#slider" ).slider({
+		range: true,
+		values: [ 17, 67 ]
+	});
+
+	$('.fRight').flexslider({
+		animation: 'slide',
+		animationLoop: 'true',
+		animationSpeed: 1000,
+		slideshow:true,
+		direction: "vertical", 
+		controlsContainer: '.flexslider'
+	});
+
+});
+
+</script>
+<link rel="stylesheet" type="text/css" href="/static/fringe_x/css/responsive.css" />
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <div class="headTop">
+      <div class="container"> 
+        <!-- <div class="row" -->
+        <h1 class="logo"> <a href="#">Fringe-x</a> </h1>
+        <div class="topNav">
+          <div class="hmLink"><a href="#">Home</a></div>
+          <div class="logBtns"> <a href="#" id="signIn" class="signBtn">Sign In</a> <a href="#" id="regIn" class="regBtn">Register</a> </div>
+          <div class="socialIco"> <a href="#" class="fb" title="Facebook">Facebook</a> <a href="#" class="twit" title="twitter">Twitter</a> <a href="#" class="gPlus" title="Google Plus">Google Plus</a> <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>
+        </div>
+        <!-- topNav ends --> 
+        <!-- </div> --> 
+      </div>
+    </div>
+    <!-- headTop ends -->
+    <div class="headLinks">
+      <div class="container">
+        <div class="headCol"> <a href="/fringe_circle/fringe_x/"><span><img src="/static/fringe_x/images/friX-icon.png" alt=""></span><span>Fringe-X</span></a> </div>
+        <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/friBoard-icon.png" alt=""></span><span>Fringe-Board</span></a> </div>
+        <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/friExp-icon.png" alt=""></span><span>Fringe-Exp</span></a> </div>
+        <div class="headCol"> <a href="#"><span><img src="/static/fringe_x/images/deal-icon.png" alt=""></span><span>Fringe-Deal</span></a> </div>
+      </div>
+      <!-- headLinks ends --> 
+    </div>
+    <!-- headLinks ends -->
+    <div class="headSearch">
+      <div class="container">
+        <form action="" method="">
+          <div class="srcForm">
+            <div class="selBox">
+              <select>
+                <option value="">Select your Location</option>
+              </select>
+            </div>
+            <div class="inBox">
+              <input type="text" name="serKeyword" id="keyword" placeholder="Type your search here...">
+              <input type="submit" name="search" value="seaach">
+            </div>
+          </div>
+          <div class="postBtn"> <a href="/fringe_circle/post_ad/">Post Free Ads</a> </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- header ends -->
+  <div class="content">
+    <div class="container">
+      <div class="adBlk">
+        <div class="adCol1">
+          <div class="adBox"> <img src="/static/fringe_x/images/vidAd.jpg"> </div>
+        </div>
+        <div class="adCol2">
+          <div class="adBox"> <img src="/static/fringe_x/images/ad2.jpg"> </div>
+        </div>
+      </div>
+      <div class="categoryLst">
+        <div class="catHead">
+          <div class="headLeft">
+            <h2 class="head automob"> <span class="headIcon"><img src="/static/fringe_x/images/autoIcon.png"></span> <span class="headTxt"> Car &amp; Bikes </span> </h2>
+            <div class="breadcrumb">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">All Products</a></li>
+                <li>Car & Bikes</li>
+              </ul>
+            </div>
+            <!-- breadcrumb ends --> 
+          </div>
+          <!-- headLeft ends -->
+          <div class="headRht">
+            <div class="catSort">
+              <div class="viewCat"> <span>View as</span> <span><a href="#" class="gridIcon">Grid</a></span> <span><a href="#" class="listIcon">List</a></span> </div>
+              <!-- viewCat ends -->
+              <div class="sortSel">
+                <select>
+                  <option value="">Sort By</option>
+                </select>
+              </div>
+              <!-- sortSel ends -->
+              <div class="viewCatLst">
+                <select>
+                  <option value="">View All Categories</option>
+                </select>
+              </div>
+            </div>
+            <!-- catSort ends --> 
+          </div>
+          <!-- headRht ends --> 
+        </div>
+        <!-- catHead ends -->
+        <div class="main">
+          <div class="mainWrap">
+          <form action="#" method="post">
+            <div class="filterCol">
+              <div id="accordion" class="custom">
+
+
+                  <!-- logic to display sub filters starts here -->
+                  {% if subcategory_filters_context %}
+                  {% for subfilter in subcategory_filters_context %}
+                  <h3>{{ subfilter.name }}</h3>
+                <div>
+                    {% if subcategory_masters_dict_context %}
+                  <div class="checkSel">
+                      {% for subfilter_dict, submaster_dict in subcategory_masters_dict_context.items %}
+                      {% ifequal subfilter subfilter_dict %}
+                    {% for submaster in submaster_dict %}
+                      <div class="check">
+
+                      <input type="checkbox" name="submaster.value" vale="submaster.valye" id="">
+                      {{ submaster.value }}</div>
+                    <!--<div class="quant">23</div>-->
+                      {% endfor %}
+                      {% endifequal %}
+                      {% endfor %}
+                  </div>
+                    {% endif %}
+                  <!-- checkSel ends -->
+                </div>
+                  {% endfor %}
+                  {% endif %}
+                  <!--  logic to display sub filters ends here -->
+
+
+                  <!-- logic to display master filters starts here -->
+                  {% if prime_category_filters_context %}
+                  {% for primefilter in prime_category_filters_context %}
+                  <h3>{{ primefilter.name }}</h3>
+                <div>
+                    {% if prime_category_masters_dict_context %}
+                  <div class="checkSel">
+                      {% for prime_filter_dict, prime_master_dict in prime_category_masters_dict_context.items %}
+                      {% ifequal primefilter prime_filter_dict %}
+                    {% for prime_master in prime_master_dict %}
+                    <div class="check">
+                      <input type="checkbox" name="{{ prime_master.value }}" value="suzuki" id="">
+                      {{ prime_master.value }}</div>
+                    <div class="quant">23</div>
+                      {% endfor %}
+                      {% endifequal %}
+                      {% endfor %}
+                  </div>
+                    {% endif %}
+                  <!-- checkSel ends -->
+                </div>
+                  {% endfor %}
+                  {% endif %}
+                  <!--  logic to display master filters ends here -->
+
+
+                  <h3>Brands</h3>
+                <div>
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" value="suzuki" id="">
+                      Suzuki</div>
+                    <div class="quant">23</div>
+                  </div>
+                  <!-- checkSel ends -->
+                </div>
+                <h3>Price Range</h3>
+                <div>
+                  <div id="slider"></div>
+                </div>
+                <h3>Posted By</h3>
+                <div>
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      Individual</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      Dealer</div>
+                  </div>
+                  <!-- checkSel ends -->
+                </div>
+                <h3>Year</h3>
+                <div>
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      2004</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      2005</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      2006</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      2007</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      2010</div>
+                  </div>
+                  <!-- checkSel ends -->
+                </div>
+                <h3>Color</h3>
+                <div>
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      Red</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      Blue</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      Grey</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      Black</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      White</div>
+                  </div>
+                  <!-- checkSel ends -->
+
+                </div>
+                <h3>Ad Type</h3>
+                <div>
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      Offering ads</div>
+                  </div>
+                  <!-- checkSel ends -->
+                  <div class="checkSel">
+                    <div class="check">
+                      <input type="checkbox" name="" id="">
+                      Wanted ads</div>
+                  </div>
+                  <!-- checkSel ends -->
+
+                </div>
+              </div>
+              <!-- accordion ends --> 
+            </div>
+            <!-- filterCol ends -->
+            <div class="catListing listView">
+              <div class="catWrap">
+                  {%if subcategory_ads_context %}
+                  {% for ad in subcategory_ads_context %}
+                <div class="catItem">
+                  <div class="itemThumb">
+                    <div class="lbl used">Used</div>
+                    <a href="/fringe_circle/ad/{{ ad.id }}/"><img src="/static/fringe_x/images/no_photo_available.png"></a> </div>
+                  <!-- itemThumb end -->
+                  <div class="itemDetail">
+                    <div class="price"> <a href="/fringe_circle/ad/{{ ad.id }}/">Rs.{{ ad.price }}/-</a> </div>
+                    <!-- price ends -->
+                    <div class="detailTxt">
+                      <h3 class="proName">{{ ad.title }}</h3>
+                      <div class="desc">{{ ad.description }}</div>
+                      <div class="postTym"> </div>
+                    </div>
+                    <!-- detailTxt end -->
+                  </div>
+                  <!-- itemDetail ends -->
+                </div>
+                  {% endfor %}
+                  {% endif %}
+
+              </div>
+              <!-- catWrap ends -->
+              <div class="pagination"> <a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> </div>
+            </div>
+            <!-- catListing ends -->
+            <div class="sideWidget">
+              <div class="discList">
+              <h2>Related Discussions</h2>
+                <div class="discBlock">
+                  <div class="comWrap">
+                    <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                  </div>
+                  <!-- comWrap end -->
+                  <div class="comAuthor"> by Ted Mosby </div>
+                </div>
+                <div class="discBlock">
+                  <div class="comWrap">
+                    <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                  </div>
+                  <!-- comWrap end -->
+                  <div class="comAuthor"> by Ted Mosby </div>
+                </div>
+                <div class="discBlock">
+                  <div class="comWrap">
+                    <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                  </div>
+                  <!-- comWrap end -->
+                  <div class="comAuthor"> by Ted Mosby </div>
+                </div>
+                <div class="discBlock">
+                  <div class="comWrap">
+                    <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                  </div>
+                  <!-- comWrap end -->
+                  <div class="comAuthor"> by Ted Mosby </div>
+                </div>
+                <div class="discBlock">
+                  <div class="comWrap">
+                    <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                  </div>
+                  <!-- comWrap end -->
+                  <div class="comAuthor"> by Ted Mosby </div>
+                </div>
+              </div>
+              <!-- discList ends -->
+              <div class="relDeals">
+                <h2>Related Deals</h2>
+                <div class="deal-lst">
+                  <div class="dealItem">
+                    <div class="dealIcon">icon</div>
+                    <div class="dealDet">
+                      <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                      <div class="dealDt"> 14 Nov, 2012 </div>
+                    </div>
+                  </div>
+                  <!-- dealItem end -->
+                  <div class="dealItem">
+                    <div class="dealIcon">icon</div>
+                    <div class="dealDet">
+                      <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                      <div class="dealDt"> 14 Nov, 2012 </div>
+                    </div>
+                  </div>
+                  <!-- dealItem end -->
+                  <div class="dealItem">
+                    <div class="dealIcon">icon</div>
+                    <div class="dealDet">
+                      <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                      <div class="dealDt"> 14 Nov, 2012 </div>
+                    </div>
+                  </div>
+                  <!-- dealItem end -->
+                  <div class="dealItem">
+                    <div class="dealIcon">icon</div>
+                    <div class="dealDet">
+                      <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                      <div class="dealDt"> 14 Nov, 2012 </div>
+                    </div>
+                  </div>
+                  <!-- dealItem end -->
+                  <div class="dealItem">
+                    <div class="dealIcon">icon</div>
+                    <div class="dealDet">
+                      <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                      <div class="dealDt"> 14 Nov, 2012 </div>
+                    </div>
+                  </div>
+                  <!-- dealItem end -->
+                  <div class="dealItem">
+                    <div class="dealIcon">icon</div>
+                    <div class="dealDet">
+                      <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                      <div class="dealDt"> 14 Nov, 2012 </div>
+                    </div>
+                  </div>
+                  <!-- dealItem end --> 
+                </div>
+                <!-- deal-lst end --> 
+              </div>
+            </div>
+            <!-- sideWidget ends --> 
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+    <!-- container ends --> 
+  </div>
+  <!-- content ends -->
+  <div class="footer">
+    <div class="sellStp">
+      <div class="container">
+        <h2>Everything sells in 5 simple steps!</h2>
+        <p>Consequat ipsum, nec sagittis sem nibh id elit.Consequat ipsum, nec sagittis sem nibh id elit.</p>
+        <img src="/static/fringe_x/images/postStp.png"> </div>
+      <!-- container ends --> 
+    </div>
+    <div class="footTop">
+      <div class="container">
+        <div class="row">
+          <div class="footCol list">
+            <h3>Popular Cities</h3>
+            <ul class="lstCol first">
+              <li><a href="#">Ahmdabad</a></li>
+              <li><a href="#">Banglore</a></li>
+              <li><a href="#">Chandigarh</a></li>
+              <li><a href="#">Chennai</a></li>
+              <li><a href="#">Coimbatore</a></li>
+              <li><a href="#">Delhi</a></li>
+              <li><a href="#">Gurgaon</a></li>
+              <li><a href="#">Hyderabad</a></li>
+            </ul>
+            <ul class="lstCol">
+              <li><a href="#">Ahmdabad</a></li>
+              <li><a href="#">Banglore</a></li>
+              <li><a href="#">Chandigarh</a></li>
+              <li><a href="#">Chennai</a></li>
+              <li><a href="#">Coimbatore</a></li>
+              <li><a href="#">Delhi</a></li>
+              <li><a href="#">Gurgaon</a></li>
+              <li><a href="#">Hyderabad</a></li>
+            </ul>
+            <ul class="lstCol">
+              <li><a href="#">Jipur</a></li>
+              <li><a href="#">Kochi</a></li>
+              <li><a href="#">Kolkata</a></li>
+              <li><a href="#">Lucknow</a></li>
+              <li><a href="#">Mumbai</a></li>
+              <li><a href="#">Pune</a></li>
+              <li><a href="#">All Cities</a></li>
+            </ul>
+          </div>
+          <div class="footCol list">
+            <h3>Quick Links</h3>
+            <ul class="lstCol first">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">All Cities</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Premium Ads</a></li>
+              <li><a href="#">Videos</a></li>
+              <li><a href="#">Advertise With Us</a></li>
+            </ul>
+            <ul class="lstCol">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">All Cities</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Premium Ads</a></li>
+              <li><a href="#">Videos</a></li>
+              <li><a href="#">Advertise With Us</a></li>
+            </ul>
+          </div>
+          <div class="footCol">
+            <h3>About Us</h3>
+            <p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+          </div>
+          <div class="footCol">
+            <h3>Get In Touch</h3>
+            <p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+            <div class="footCont">
+              <div class="location">
+                <p><span>icon</span><span>Moonshine Street No: 14/05<br>
+                  Light City, Jupiter</span></p>
+              </div>
+              <div class="contNo">
+                <p><span>icon</span><span>0247 541 65 87</span></p>
+              </div>
+              <div class="mail">
+                <p><span>icon</span><span><a href="mailto:support@longwave.com">support@longwave.com</a></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- row ends -->
+        <div class="footNav">
+          <ul>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Techology</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Entertainment</a></li>
+            <li><a href="#">Culture</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Classifieds</a></li>
+            <li><a href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="footInfo">
+          <p> Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
+        </div>
+      </div>
+    </div>
+    <!-- footTop ends -->
+    <div class="footBottom">
+      <div class="container">
+        <div class="fRight">
+        <ul class="slides">
+        <li>
+        <div class="note"> <a href=""><img  src="/static/fringe_x/images/footImg.jpg"/></a> Lorem Ipsum </span>ut aliquam massa nisl quis neque. Suspendisse in orci enim,
+        aliquam massa nisl quis neque. Suspendisse in orci enim. </div>
+        </li>
+        <li>
+        <div class="note"> <a href=""><img  src="/static/fringe_x/images/footImg.jpg"/></a> <strong>Lorem Ipsum</strong>ut aliquam massa nisl quis neque. Suspendisse in orci enim,
+        aliquam massa nisl quis neque. Suspendisse in orci enim. </div>
+        </li>
+        <li>
+        <div class="note"> <a href=""><img  src="images/footImg.jpg"/></a> <em><strong>Lorem Ipsum ut aliquam massa nisl quis neque.</strong></em> Suspendisse in orci enim, aliquam massa nisl quis neque. Suspendisse in orci enim.</div>
+        </li>
+        </ul>
+        </div>
+        <div class="fleft">
+          <div>Copyright © 2014 Company Name.</div>
+          <div class="footLnk"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer ends --> 
+</div>
+</body>
+</html>

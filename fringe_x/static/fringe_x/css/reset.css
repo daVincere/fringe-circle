@@ -1,0 +1,35 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight:normal; font-style: inherit; }
+strong                                 { font-weight:bold; }
+em                                     { font-style:italic; }
+:focus                                 { outline: 0; }
+body                                   { color:#747474; background:#ffffff ; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.6}
+ol, ul                                 {  margin-left: 20px; list-style: none; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table                                  { border-collapse: separate; }
+caption, th, td                        { text-align: left; font-weight: normal; }
+blockquote:before, blockquote:after,
+ q:before, q:after                     { content: ""; }
+blockquote, q                          { quotes: "" ""; }
+
+/*   T E X T   A N D   L I N K   S T Y L E S   */
+a                                      { color: #845696; text-decoration:none; }
+a:hover                                { color: #454545; text-decoration:none; }
+article, aside, details, figcaption,
+figure, footer, header, hgroup, menu,
+nav, section                           {  display: block;}
+img{ border:none;}
+hr{ height: 8px; width: 100%; background: url(../images/hr-bg.png) repeat-x; display: block; margin: 0; border: none; clear: both}
+
+/* Headings */
+h1, h2, h2 a, h3, h4                   { font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; margin: 0 0 10px; color: #373c41;}
+h1                                     { font-size:32px; font-weight: bold; line-height:1.25; }
+h2                                     { font-size:30px; font-weight: bold; line-height:1.25;}
+h3                                     { font-size:26px; font-weight: bold; line-height:1.25;  }
+h4                                     { font-size:22px; font-weight: bold; }
+h5                                     { font-size:16px; font-weight: bold; }
+h6                                     { font-size:14px; font-weight: bold; }
+
+h1 span                                { font-size: 26px; font-weight: bold;} 
+input, select, textarea, button		   { font-family: 'Roboto', sans-serif; }

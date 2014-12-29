@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<!--[if IE 6]> <html class="no-js" id="ie6" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 7]> <html class="no-js" id="ie7" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 8]> <html class="no-js" id="ie8" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" dir="ltr" lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<title>Fringe-X</title>
+<!-- <link rel="shortcut icon" href="favicon.png" > -->
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5shiv-printshiv.js"></script>
+<![endif]-->
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/custom.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script>
+$(document).ready(function() {
+	/* Check width on page load*/
+    if ( $(window).width() < 1280 & $(window).width() > 1007) {
+  $(".catBlock .listBox:nth-child(4n)").addClass("clr");
+    }
+        else if ( $(window).width() < 480) {
+    	  $(".catBlock .listBox:nth-child(2n)").addClass("clr");
+    }
+    else {
+    	  $(".catBlock .listBox:nth-child(5n)").addClass("clr");
+    }
+});
+</script>
+
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <div class="headTop">
+      <div class="container"> 
+        <!-- <div class="row" -->
+        <h1 class="logo"> <a href="#" class="contact-button">Fringe-x</a> </h1>
+        <div class="topNav">
+          <div class="hmLink"><a href="#">Home</a></div>
+          <div class="logBtns"> <a href="#" class="signBtn">Sign In</a> <a href="#" class="regBtn">Register</a> </div>
+          <div class="socialIco"> <a href="#" class="fb" title="Facebook">Facebook</a> <a href="#" class="twit" title="twitter">Twitter</a> <a href="#" class="gPlus" title="Google Plus">Google Plus</a> <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>
+        </div>
+        <!-- topNav ends --> 
+        <!-- </div> --> 
+      </div>
+    </div>
+    <!-- headTop ends -->
+    <div class="headLinks">
+      <div class="container">
+        <div class="headCol"> <a href="#"><span><img src="images/friX-icon.png" alt=""></span><span>Fringe-X</span></a> </div>
+        <div class="headCol"> <a href="#"><span><img src="images/friBoard-icon.png" alt=""></span><span>Fringe-Board</span></a> </div>
+        <div class="headCol"> <a href="#"><span><img src="images/friExp-icon.png" alt=""></span><span>Fringe-Exp</span></a> </div>
+        <div class="headCol"> <a href="#"><span><img src="images/deal-icon.png" alt=""></span><span>Fringe-Deal</span></a> </div>
+      </div>
+      <!-- headLinks ends --> 
+    </div>
+    <!-- headLinks ends -->
+    <div class="headSearch">
+      <div class="container">
+        <form action="" method="">
+          <div class="srcForm">
+            <div class="selBox">
+              <select>
+                <option value="">Select your Location</option>
+              </select>
+            </div>
+            <div class="inBox">
+              <input type="text" name="serKeyword" id="keyword" placeholder="Type your search here...">
+              <input type="submit" name="search" value="seaach">
+            </div>
+          </div>
+          <div class="postBtn"> <a href="#">Post Free Ads</a> </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- header ends -->
+  <div class="content">
+    <div class="container">
+      <div class="catBlock row">
+        <div class="listBox">
+          <h2 class="boxHead automob"> <span class="headIcon"><img src="images/autoIcon.png"></span> <span class="headTxt">Car & Bikes</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- autoMob -->
+        <div class="listBox">
+          <h2 class="boxHead mob"> <span class="headIcon"><img src="images/mobileIcon.png"></span> <span class="headTxt">Mobiles &amp; Tablets</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Mobile -->
+        <div class="listBox">
+          <h2 class="boxHead job"> <span class="headIcon"><img src="images/jobIcon.png"></span> <span class="headTxt">Jobs</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Jobs -->
+        <div class="listBox">
+          <h2 class="boxHead elctro"> <span class="headIcon"><img src="images/tvIcon.png"></span> <span class="headTxt">Electronics</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Electronics -->
+        <div class="listBox">
+          <h2 class="boxHead service"> <span class="headIcon"><img src="images/servicesIcon.png"></span> <span class="headTxt">Services</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- service -->
+        <div class="listBox clrBox">
+          <h2 class="boxHead realEst"> <span class="headIcon"><img src="images/propertyIcon.png"></span> <span class="headTxt">Real Estate</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Real Estate -->
+        <div class="listBox">
+          <h2 class="boxHead commun"> <span class="headIcon"><img src="images/comIcon.png"></span> <span class="headTxt">Community</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Community -->
+        <div class="listBox">
+          <h2 class="boxHead entertain"> <span class="headIcon"><img src="images/musicIcon.png"></span> <span class="headTxt">Entertainment</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Entertainment -->
+        <div class="listBox">
+          <h2 class="boxHead petCare"> <span class="headIcon"><img src="images/petIcon.png"></span> <span class="headTxt">Pets & Pet Care</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- PetCare -->
+        <div class="listBox">
+          <h2 class="boxHead books"> <span class="headIcon"><img src="images/bookIcon.png"></span> <span class="headTxt">Books &amp; Novels</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Books -->
+        <div class="listBox clrBox">
+          <h2 class="boxHead matrim"> <span class="headIcon"><img src="images/matrimonyIcon.png"></span> <span class="headTxt">Matrimonial</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Matrimonial -->
+        <div class="listBox">
+          <h2 class="boxHead educat"> <span class="headIcon"><img src="images/eduIcon.png"></span> <span class="headTxt">Education</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Education -->
+        <div class="listBox">
+          <h2 class="boxHead catMore"> <span class="headTxt">+ Add more categories</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Add category -->
+        <div class="listBox">
+          <h2 class="boxHead catMore"> <span class="headTxt">+ Add more categories</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Add category -->
+        <div class="listBox">
+          <h2 class="boxHead catMore"> <span class="headTxt">+ Add more categories</span> </h2>
+          <div class="listCont">
+            <ul>
+              <li> <a href="#">
+                <div class="lstItem">Cars</div>
+                <div class="numItem">3</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Classic & Modern</div>
+                <div class="numItem">6</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Fancy Cars</div>
+                <div class="numItem">7</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Kids Bikes</div>
+                <div class="numItem">1</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Motor Bikes</div>
+                <div class="numItem">9</div>
+                </a> </li>
+              <li> <a href="#">
+                <div class="lstItem">Others</div>
+                <div class="numItem">2</div>
+                </a> </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Add category --> 
+      </div>
+      <!-- catBlock ends -->
+      <div class="alertBox">
+        <div class="alertFrm">
+          <h3>Create Free Alert <span>(Tell us your need)</span></h3>
+          <form action="" method="post">
+            <div class="frmRow">
+              <div class="frmCol">
+                <input type="text" name="selCat" id="selCat" placeholder="Select Category">
+              </div>
+              <div class="frmCol">
+                <input type="text" name="selSubCat" id="selSubCat" placeholder="Select subcategory">
+              </div>
+              <div class="frmCol">
+                <input type="text" name="buy" id="" placeholder="I want to Buy">
+              </div>
+              <div class="frmCol">
+                <input type="text" name="mobN" id="" placeholder="Mobile Number">
+              </div>
+            </div>
+            <div class="frmRow">
+              <div class="frmCol">
+                <input type="text" name="loc" id="loc" placeholder="Any Location">
+              </div>
+              <div class="frmCol">
+                <input type="text" name="selSubCat" id="selSubCat" placeholder="Any Locality">
+              </div>
+              <div class="frmCol">
+                <input type="text" name="email" id="" placeholder="Email Address">
+              </div>
+              <div class="frmCol">
+                <input type="text" name="mobN2" id="" placeholder="Mobile Number">
+              </div>
+            </div>
+            <div class="frmRow subWrap">
+              <input type="submit" name="subAlert" id="subAlert" vlaue="Submit">
+            </div>
+          </form>
+        </div>
+        <!-- alertFrm ends --> 
+      </div>
+      <!-- alertBox ends -->
+      <div class="linkBox">
+        <div class="boxCol">
+          <div class="twitPost">
+            <h3>Twitter</h3>
+            <ul class="postLst">
+              <li>
+                <div class="postEntry">
+                  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum enim.</p>
+                </div>
+                <div class="postTm">
+                  <p><span class="time">10:16 AM</span> <span class="day">yesterday</span></p>
+                </div>
+              </li>
+              <li>
+                <div class="postEntry">
+                  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum enim.</p>
+                </div>
+                <div class="postTm">
+                  <p><span class="time">10:16 AM</span> <span class="day">yesterday</span></p>
+                </div>
+              </li>
+              <li>
+                <div class="postEntry">
+                  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum enim.</p>
+                </div>
+                <div class="postTm">
+                  <p><span class="time">10:16 AM</span> <span class="day">yesterday</span></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- twitPost ends -->
+        <div class="boxCol">
+          <div class="popCat">
+            <h3>Popular Category On Fringe-x</h3>
+            <div class="catTag"> <a href="#">Motor Bikes</a> <a href="#">Real Estate</a> <a href="#">Novels</a> <a href="#">Pets</a> <a href="#">Education</a> <a href="#">Pets</a> <a href="#">Service</a><a href="#">Pets</a><a href="#">Matrimonial</a><a href="#">Events</a><a href="#">Jobs</a><a href="#">Novels</a><a href="#">Animals</a><a href="#">Novels</a><a href="#">Novels</a><a href="#">Novels</a> </div>
+          </div>
+        </div>
+        <!-- popCat ends -->
+        <div class="boxCol ad">
+          <div class="adLnk"> <img src="images/adImg.jpg"> </div>
+        </div>
+        <!-- vidLnk ends --> 
+      </div>
+      <!-- linkBox Ends --> 
+    </div>
+    <!-- container ends --> 
+  </div>
+  <!-- content ends -->
+  <div class="footer">
+    <div class="sellStp">
+      <div class="container">
+        <h2>Everything sells in 5 simple steps!</h2>
+        <p>Consequat ipsum, nec sagittis sem nibh id elit.Consequat ipsum, nec sagittis sem nibh id elit.</p>
+        <img src="images/postStp.png"> </div>
+      <!-- container ends --> 
+    </div>
+   <div class="footTop">
+			<div class="container">
+				<div class="row">
+					<div class="footCol list">
+						<h3>Popular Cities</h3>
+						<ul class="lstCol first">
+							<li><a href="#">Ahmdabad</a></li>
+							<li><a href="#">Banglore</a></li>
+							<li><a href="#">Chandigarh</a></li>
+							<li><a href="#">Chennai</a></li>
+							<li><a href="#">Coimbatore</a></li>
+							<li><a href="#">Delhi</a></li>
+							<li><a href="#">Gurgaon</a></li>
+							<li><a href="#">Hyderabad</a></li>
+						</ul>
+						<ul class="lstCol">
+							<li><a href="#">Ahmdabad</a></li>
+							<li><a href="#">Banglore</a></li>
+							<li><a href="#">Chandigarh</a></li>
+							<li><a href="#">Chennai</a></li>
+							<li><a href="#">Coimbatore</a></li>
+							<li><a href="#">Delhi</a></li>
+							<li><a href="#">Gurgaon</a></li>
+							<li><a href="#">Hyderabad</a></li>
+						</ul>
+						<ul class="lstCol">
+							<li><a href="#">Jipur</a></li>
+							<li><a href="#">Kochi</a></li>
+							<li><a href="#">Kolkata</a></li>
+							<li><a href="#">Lucknow</a></li>
+							<li><a href="#">Mumbai</a></li>
+							<li><a href="#">Pune</a></li>
+							<li><a href="#">All Cities</a></li>
+						</ul>
+					</div>
+					<div class="footCol list two">
+						<h3>Quick Links</h3>
+						<ul class="lstCol first">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Contact Us</a></li>
+							<li><a href="#">Careers</a></li>
+							<li><a href="#">All Cities</a></li>
+							<li><a href="#">Help</a></li>
+							<li><a href="#">Premium Ads</a></li>
+							<li><a href="#">Videos</a></li>
+							<li><a href="#">Advertise With Us</a></li>
+						</ul>
+						<ul class="lstCol">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Contact Us</a></li>
+							<li><a href="#">Careers</a></li>
+							<li><a href="#">All Cities</a></li>
+							<li><a href="#">Help</a></li>
+							<li><a href="#">Premium Ads</a></li>
+							<li><a href="#">Videos</a></li>
+							<li><a href="#">Advertise With Us</a></li>
+						</ul>
+					</div>
+					<div class="footCol">
+						<h3>About Us</h3>
+						<p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+					</div>
+					<div class="footCol">
+						<h3>Get In Touch</h3>
+						<p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+						<div class="footCont">
+							<div class="location">
+								<p><span>icon</span><span>Moonshine Street No: 14/05<br>
+								Light City, Jupiter</span></p>
+							</div>
+							<div class="contNo"><p><span>icon</span><span>0247 541 65 87</span></p></div>
+							<div class="mail"><p><span>icon</span><span><a href="mailto:support@longwave.com">support@longwave.com</a></span></p></div>
+
+						</div>
+					</div>
+				</div>	<!-- row ends -->
+				<div class="footNav">
+					<ul>
+						<li><a href="#">News</a></li>
+						<li><a href="#">Sports</a></li>
+						<li><a href="#">Techology</a></li>
+						<li><a href="#">Business</a></li>
+						<li><a href="#">Movies</a></li>
+						<li><a href="#">Entertainment</a></li>
+						<li><a href="#">Culture</a></li>
+						<li><a href="#">Books</a></li>
+						<li><a href="#">Classifieds</a></li>
+						<li><a href="#">Blogs</a></li>
+					</ul>
+				</div>
+				<div class="footInfo">
+					<p>
+					Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
+				</div>
+			</div>
+		</div>	<!-- footTop ends -->
+	<!--Footer Bottom-->
+	<div class="footBottom">
+			<div class="container">
+				<div class="fleft">
+					<div>Copyright © 2014 Company Name.</div>
+					<div class="footLnk"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a>
+					</div>
+				</div>
+				<div class="fRight">
+					<div class="footImg"><img src="images/footImg.jpg" alt=""></div>
+					<div class="footTxt"><span>Lorem Ipsum</span> ut aliquam massa nisl quis neque. Suspendisse in orci enim, aliquam massa nisl quis neque. Suspendisse in orci enim.
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--Discussion form-->
+		<div class="disc-post">
+		<div class="disc-post-wr">
+		
+		<h1>Review and Add Additional Details</h1>
+		
+		<div class="row">
+		<label class="close">Your Discussion</label>
+		
+		<input type="text" placeholder="Type your discussion?" class="post-f-bx" name="">
+						
+						
+		</div>
+		<div class="row">
+		<div class="post-bx-col">
+		
+		<label>Select Category</label>
+						<div class="list-dropdown"><select name="">
+		
+		<option>Select category</option>
+		</select></div>
+						</div>
+						
+						<div class="post-bx-col last">
+						<label>Select Sub-Category</label>
+		<div class="list-dropdown"><select name="">
+		
+		<option>Select sub-category</option>
+		</select></div></div>
+		</div>
+		
+		<div class="row">
+		<div class="post-bx-col">
+		
+		<label>Select Category</label>
+						<div class="post-f-bx">
+		<div class="rdio-col first">Is your discussion location specific.</div>
+		<div class="rdio-col active"><span><input type="radio" value="" name=""></span>Yes</div>
+		<div class="rdio-col"><span><input type="radio" value="" name=""></span>No</div>
+		</div>
+		
+		
+		<div class="list-dropdown"><select name="">
+		
+		<option>City</option>
+		</select></div>
+		
+		<div class="list-dropdown"><select name="">
+		
+		<option>State</option>
+		</select></div>
+		<div class="list-dropdown"><select name="">
+		
+		<option>Locality</option>
+		</select></div>
+						</div>
+						
+						<div class="post-bx-col last">
+						<label>Select Sub-Category</label>
+		<textarea rows="" class="post-f-bx" cols="" name="">Add detail...</textarea></div>
+		</div>
+		
+		<div class="post-btn-row">
+		<div class="postBtn"><input name="" value="SUBMIT" type="submit">
+						
+					</div>
+					</div>
+		<div class="clearfx"></div>
+		
+		
+		</div>
+		</div>
+		<div class="overley-bg"></div>
+</body>
+</html>

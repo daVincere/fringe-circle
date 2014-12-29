@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if IE 6]> <html class="no-js" id="ie6" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 7]> <html class="no-js" id="ie7" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 8]> <html class="no-js" id="ie8" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" dir="ltr" lang="en-US">
+<!--<![endif]-->
+<head>
+  {% load staticfiles %}
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<title>Fringe-X</title>
+<!-- <link rel="shortcut icon" href="favicon.png" > -->
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5shiv-printshiv.js"></script>
+<![endif]-->
+<script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
+<script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/fringe_x/js/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
+<link href="/static/fringe_x/css/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/static/fringe_x/css/responsive.css" />
+</head>
+<body>
+<div class="wrapper">
+  <div class="overlayBg"></div>
+  <div class="overlayCont logFrm">
+    <div class="frmWrap">
+      <h2>I already have a account</h2>
+      <hr>
+      <div class="frmContainer">
+        <h3>Sign In</h3>
+        <form action="/fringe_circle/login/" method="post">{% csrf_token %}
+          <div class="frmRow">
+            {% if login_error_context %}
+            <span style="color:red;">Wrong user name or password</span>
+            {% endif %}
+            <input type="text" name="work_email" id="work_email" placeholder="Email / User ID">
+          </div>
+          <div class="frmRow">
+            <input type="password" name="password" id="password" placeholder="Password">
+          </div>
+          <div class="subWrap">
+            <input type="submit" name="submit_form" id="submit_form" value="Submit">
+          </div>
+        </form>
+        <div class="frgPass"> <a href="#">Forgot your password?</a> </div>
+      </div>
+      <!-- frmContainer ends --> 
+    </div>
+    <!-- frmWrap ends --> 
+  </div>
+  <!-- overlayFrm end --> 
+  
+</div>
+</body>
+</html>

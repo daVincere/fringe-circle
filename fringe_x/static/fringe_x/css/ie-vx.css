@@ -1,0 +1,7 @@
+
+/* CSS IE 8 & IE 7 */
+
+#menu ul li a {  }
+#menu ul li { *float: left; *width: auto; }
+.header-bottom  { *bottom:110px; }
+.testimonial-slider ol li {  *float: left; }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load multiuploader staticfiles %}
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+    <p>
+        {{ form.upload_file_field }}
+        {{ form.upload_file_field.errors }}
+    </p>
+    {% multiuploader_noscript form.upload_file_field.html_name %}
+    <a id="show_upload" type="button" class="button"><i class="attachment"></i>Attach Files</a>
+    {% multiuploader_form form_type="default" template="multiuploader/form.html" target_form_fieldname=forms.edit.upload_file_field.html_name js_prefix="jQuery" send_button_selector="input[name=_edit]" wrapper_element_id="fileUploads" lock_while_uploading=True number_files_attached=forms.attached_count %}
+
+    <input id="send" type="submit" value="Send" class="button">
+</form>
+</body>
+</html>

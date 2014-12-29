@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<!--[if IE 6]> <html class="no-js" id="ie6" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 7]> <html class="no-js" id="ie7" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 8]> <html class="no-js" id="ie8" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" dir="ltr" lang="en-US">
+<!--<![endif]-->
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>Fringe-X</title>
+    <!-- <link rel="shortcut icon" href="favicon.png" > -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5shiv-printshiv.js"></script>
+    <![endif]-->
+    <script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/fringe_x/js/location_selection_logic.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
+    <script src="/static/fringe_x/js/custom.js"></script>
+    <script>
+{% if not location_state_context %}
+{% if not location_city_context %}
+
+$(document).ready(function()
+{
+	$(window).load(function()
+	{
+		$('body').addClass('hidden-body');
+		$('.overley-bg').show();
+		$('.disc-post,.find-locate').show()
+	});
+
+	$('.close-btn').on('click',function(){
+		$('body').removeClass('hidden-body');
+		$('.overley-bg').hide();
+		$('.disc-post,.find-locate').hide()
+	});
+});
+
+{% endif %}
+{% endif %}
+
+$(document).ready(function() {
+	/* Check width on page load*/
+    if ( $(window).width() < 1280 & $(window).width() > 1007) {
+  $(".catBlock .listBox:nth-child(4n)").addClass("clr");
+    }
+        else if ( $(window).width() < 480) {
+    	  $(".catBlock .listBox:nth-child(2n)").addClass("clr");
+    }
+    else {
+    	  $(".catBlock .listBox:nth-child(5n)").addClass("clr");
+    }
+});
+</script>
+    <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/responsive.css" />
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="headTop">
+            <div class="container">
+                <!-- <div class="row" -->
+                <h1 class="logo"> <a href="#">Fringe-x</a> </h1>
+                <div class="topNav" id="home_location">
+                    <div class="hmLink" id="hmLink">
+                        <img width="22px"src="/static/fringe_x/images/location-white.png"/>
+                        {% if location_state_context %}
+                        {% if location_city_context %}
+                        {{ location_city_context }}  ({{ location_state_context }})
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    {% if current_user_context %}
+                    <div class="logBtns">
+                        <a href="#" id="signin" class="signBtn">Hi {{ current_user_context.name }}</a>
+                        <a href="/fringe_circle/logout/" id="regin" class="regBtn">Logout</a>
+                    </div>
+                    {% endif %}
+                    {% if not current_user_context %}
+                    <div class="socialIco">
+                        <a href="#" class="fb" title="Facebook">Facebook</a>
+                        <a href="#" class="twit" title="twitter">Twitter</a>
+                        <a href="#" class="gPlus" title="Google Plus">Google Plus</a>
+                        <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>
+                    {% endif %}
+                </div>
+                <!-- topNav ends -->
+                <!-- </div> -->
+            </div>
+        </div>
+        <!-- headTop ends -->
+        <div class="headLinks">
+            <div class="container">
+                <div class="headCol active">
+                    <a href="/fringe_circle/fringe_x/">
+                    <span><img src="/static/fringe_x/images/friX-icon.png" alt="">
+                </span>
+                    <span>
+                        Fringe-X
+                    </span>
+                    </a>
+                </div>
+                <div class="headCol">
+                    <a href="#">
+                    <span>
+                        <img src="/static/fringe_x/images/friBoard-icon.png" alt="">
+                    </span>
+                    <span>
+                        Fringe-Board
+                    </span>
+                    </a>
+                </div>
+                <div class="headCol">
+                    <a href="#">
+                    <span>
+                        <img src="/static/fringe_x/images/friExp-icon.png" alt="">
+                    </span>
+                    <span>
+                        Fringe-Exp
+                    </span>
+                    </a>
+                </div>
+                <div class="headCol">
+                    <a href="#">
+                    <span>
+                        <img src="/static/fringe_x/images/deal-icon.png" alt="">
+                    </span>
+                    <span>
+                        Fringe-Deal
+                    </span>
+                    </a>
+                </div>
+            </div>
+            <!-- headLinks ends -->
+        </div>
+        <!-- headLinks ends -->
+        <!--<div class="headSearch">-->
+        <!--<div class="container">-->
+        <!--<form action="" method="">-->
+        <!--<div class="srcForm">-->
+        <!--<div class="selBox" id="popup">-->
+        <!--<select>-->
+        <!--<option>-->
+        <!--{% if location_state_context %}-->
+        <!--{% if location_city_context %}-->
+        <!--{{ location_state_context }}>{{ location_city_context }}-->
+        <!--{% endif %}-->
+        <!--{% endif %}-->
+        <!--</option>-->
+        <!--</select>-->
+        <!--</div>-->
+        <!--<div class="inBox">-->
+        <!--<input type="text" name="serKeyword" id="keyword" placeholder="Type your search here...">-->
+        <!--<input type="submit" name="search" value="seaach">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="postBtn">-->
+        <!--<a href="#">-->
+        <!--Post Free Ads-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--</form>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+    <!-- header ends -->
+    <div class="content">
+        <div class="container">
+            <div id="productPage" class="categoryLst">
+                <div class="catHead">
+                    {% if product_ad_obj_context %}
+                    <div class="headLeft">
+                        <h2 class="head automob">
+            <span class="headIcon">
+                <img src="{% static product_ad_obj_context.category.icon_image_url %}">
+            </span>
+            <span class="headTxt">
+                <a href="/fringe_circle/fringe_x/">
+                    {{ product_ad_obj_context.category.name }}
+                </a>
+            </span>
+                        </h2>
+                        <div class="breadcrumb">
+                            <ul>
+                                <li>
+                                    <a href="/fringe_circle/product_list/{{ product_ad_obj_context.subcategory.name }}/">
+                                        {{ product_ad_obj_context.subcategory.name }}
+                                    </a>
+                                </li>
+                                <!--<li>-->
+                                <!--<a href="/fringe_circle/product_list/{{ product_ad_obj_context.subcategory.name }}">-->
+                                <!--{{ product_ad_obj_context.subcategory.name }}-->
+                                <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--<a href="/fringe_circle/ad/{{ product_ad_obj_context.id }}">-->
+                                <!--{{ product_ad_obj_context.title }}-->
+                                <!--</a>-->
+                                <!--</li>-->
+
+                            </ul>
+                        </div>
+                        <!-- breadcrumb ends -->
+                    </div>
+                    {% endif %}
+                    <!-- headLeft ends -->
+                    <div class="headRht">
+                        <div class="catSort">
+
+            <span class="individual-ad-post-btn">
+                <a href="/fringe_circle/post_ad/">
+                    Post Free Ad+
+                </a>
+            </span>
+                            <!-- sortSel ends -->
+
+                            <div class="viewCatLst">
+                                <select>
+                                    <option value="">View All Categories</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <!-- catSort ends -->
+                    </div>
+
+                    <!-- headRht ends -->
+                </div>
+                <!-- catHead ends -->
+                <div class="main">
+                    <div class="mainWrap">
+                        <div class="item-dtl-wrap">
+                            {% if product_ad_obj_context %}
+                            <div class="item-full-detail">
+                                <div class="prodpage-adDtl-wrap">
+                                    <div class="prodpage-ad-gallery">
+                                        <div class="prodpage-ad-gallery-top-colL">
+                                            <div class="prod-name">{{ product_ad_obj_context.title }}</div>
+                                            <div class="prod-posted">
+                                                <span class="label">Posted By :</span>
+                                                <span class="value">{{ product_ad_obj_context.posted_by }}</span>
+                                                <span class="label">Posted On :</span>
+                                                <span class="value">{{ product_ad_obj_context.ad_post_duration }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="prodpage-ad-gallery-top-colR">
+            <span class="rply-userName">
+                {{ product_ad_obj_context.seller.name }}
+
+            </span>
+                                            <span><a href="#" class="rply-user">REPLY TO THIS USER</a></span>
+                                            <span><img src="/static/fringe_x/images/icon-ribbon.png"></span>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="prodpage-ad-gallery-btmwrap">
+                                            <div class="prodpage-ad-gallery-btm-colL">
+                                                <div class="innerWrap"></div>
+                                            </div>
+                                            <div class="prodpage-ad-gallery-btm-colR">
+                                                {% if subfilter_data_context %}
+                                                {% for data in subfilter_data_context %}
+                                                <div class="prod-info-colL">{{ data.product_sub_filter.name }}</div>
+                                                <div class="prod-info-colR">{{ data.value }}</div>
+                                                {% endfor %}
+                                                {% endif %}
+
+                                                {% if primefilter_data_context %}
+                                                {% for data in primefilter_data_context %}
+                                                <div class="prod-info-row">
+                                                    <div class="prod-info-colL">{{ data.product_prime_filter.name }}</div>
+                                                    <div class="prod-info-colR">{{ data.value }}</div>
+                                                </div>
+                                                {% endfor %}
+                                                {% endif %}
+
+                                                <div class="prod-info-row">
+                                                    <div class="prod-info-colL">Area</div>
+                                                    <div class="prod-info-colR">{{ product_ad_obj_context.locality.name_of_locality }}</div>
+                                                </div>
+                                                <div class="prod-info-row">
+                                                    <div class="prod-info-colL">Posted by</div>
+                                                    <div class="prod-info-colR">{{ product_ad_obj_context.posted_by }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear padT10"></div>
+                                    <h2>Ad Details</h2>
+                                    <p>
+                                        {{ product_ad_obj_context.description  }}
+                                    </p>
+                                    <br>
+                                    <h2>Similar Ads</h2>
+                                    <!--p-->
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="adBlk">
+                                <div class="adCol1">
+                                    <div class="adBox">
+                                        <img src="/static/fringe_x/images/vidAd.jpg">
+                                    </div>
+                                </div>
+                                <div class="adCol2">
+                                    <div class="adBox">
+                                        <img src="/static/fringe_x/images/ad2.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="map-wrap"><img src="/static/fringe_x/images/map.jpg"></div>
+                        </div>
+                        {% endif %}
+                        <div class="sideWidget">
+                            <h2>Related Discussions</h2>
+                            <div class="discList">
+                                <div class="discBlock">
+                                    <div class="comWrap">
+                                        <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                                    </div>
+                                    <!-- comWrap end -->
+                                    <div class="comAuthor"> by Ted Mosby </div>
+                                </div>
+                                <div class="discBlock">
+                                    <div class="comWrap">
+                                        <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                                    </div>
+                                    <!-- comWrap end -->
+                                    <div class="comAuthor"> by Ted Mosby </div>
+                                </div>
+                                <div class="discBlock">
+                                    <div class="comWrap">
+                                        <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                                    </div>
+                                    <!-- comWrap end -->
+                                    <div class="comAuthor"> by Ted Mosby </div>
+                                </div>
+                                <div class="discBlock">
+                                    <div class="comWrap">
+                                        <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                                    </div>
+                                    <!-- comWrap end -->
+                                    <div class="comAuthor"> by Ted Mosby </div>
+                                </div>
+                                <div class="discBlock">
+                                    <div class="comWrap">
+                                        <div class="discCom"> Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. </div>
+                                    </div>
+                                    <!-- comWrap end -->
+                                    <div class="comAuthor"> by Ted Mosby </div>
+                                </div>
+                            </div>
+                            <!-- discList ends -->
+                            <div class="relDeals">
+                                <h2>Related Deals</h2>
+                                <div class="deal-lst">
+                                    <div class="dealItem">
+                                        <div class="dealIcon">icon</div>
+                                        <div class="dealDet">
+                                            <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                            <div class="dealDt"> 14 Nov, 2012 </div>
+                                        </div>
+                                    </div>
+                                    <!-- dealItem end -->
+                                    <div class="dealItem">
+                                        <div class="dealIcon">icon</div>
+                                        <div class="dealDet">
+                                            <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                            <div class="dealDt"> 14 Nov, 2012 </div>
+                                        </div>
+                                    </div>
+                                    <!-- dealItem end -->
+                                    <div class="dealItem">
+                                        <div class="dealIcon">icon</div>
+                                        <div class="dealDet">
+                                            <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                            <div class="dealDt"> 14 Nov, 2012 </div>
+                                        </div>
+                                    </div>
+                                    <!-- dealItem end -->
+                                    <div class="dealItem">
+                                        <div class="dealIcon">icon</div>
+                                        <div class="dealDet">
+                                            <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                            <div class="dealDt"> 14 Nov, 2012 </div>
+                                        </div>
+                                    </div>
+                                    <!-- dealItem end -->
+                                    <div class="dealItem">
+                                        <div class="dealIcon">icon</div>
+                                        <div class="dealDet">
+                                            <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                            <div class="dealDt"> 14 Nov, 2012 </div>
+                                        </div>
+                                    </div>
+                                    <!-- dealItem end -->
+                                    <div class="dealItem">
+                                        <div class="dealIcon">icon</div>
+                                        <div class="dealDet">
+                                            <p>Vivamus sagittis lacus vel augue metus laoreet rutrum dolor auctor.</p>
+                                            <div class="dealDt"> 14 Nov, 2012 </div>
+                                        </div>
+                                    </div>
+                                    <!-- dealItem end -->
+                                </div>
+                                <!-- deal-lst end -->
+                            </div>
+                        </div>
+                        <!-- sideWidget ends -->
+                    </div>
+                </div>
+            </div>
+            <div class="adBlk">
+                <div class="adCol1">
+                    <div class="adBox">
+                        <img src="/static/fringe_x/images/vidAd.jpg">
+                    </div>
+                </div>
+                <div class="adCol2">
+                    <div class="adBox">
+                        <img src="/static/fringe_x/images/ad2.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container ends -->
+    </div>
+    <!-- content ends -->
+    <div class="footer">
+        <div class="sellStp">
+            <div class="container">
+                <h2>Everything sells in 5 simple steps!</h2>
+                <p>Consequat ipsum, nec sagittis sem nibh id elit.Consequat ipsum, nec sagittis sem nibh id elit.</p>
+                <img src="/static/fringe_x/images/postStp.png"> </div>
+            <!-- container ends -->
+        </div>
+        <div class="footTop">
+            <div class="container">
+                <div class="row">
+                    <div class="footCol list">
+                        <h3>Popular Cities</h3>
+                        <ul class="lstCol first">
+                            <li><a href="#">Ahmdabad</a></li>
+                            <li><a href="#">Banglore</a></li>
+                            <li><a href="#">Chandigarh</a></li>
+                            <li><a href="#">Chennai</a></li>
+                            <li><a href="#">Coimbatore</a></li>
+                            <li><a href="#">Delhi</a></li>
+                            <li><a href="#">Gurgaon</a></li>
+                            <li><a href="#">Hyderabad</a></li>
+                        </ul>
+                        <ul class="lstCol">
+                            <li><a href="#">Ahmdabad</a></li>
+                            <li><a href="#">Banglore</a></li>
+                            <li><a href="#">Chandigarh</a></li>
+                            <li><a href="#">Chennai</a></li>
+                            <li><a href="#">Coimbatore</a></li>
+                            <li><a href="#">Delhi</a></li>
+                            <li><a href="#">Gurgaon</a></li>
+                            <li><a href="#">Hyderabad</a></li>
+                        </ul>
+                        <ul class="lstCol">
+                            <li><a href="#">Jipur</a></li>
+                            <li><a href="#">Kochi</a></li>
+                            <li><a href="#">Kolkata</a></li>
+                            <li><a href="#">Lucknow</a></li>
+                            <li><a href="#">Mumbai</a></li>
+                            <li><a href="#">Pune</a></li>
+                            <li><a href="#">All Cities</a></li>
+                        </ul>
+                    </div>
+                    <div class="footCol list">
+                        <h3>Quick Links</h3>
+                        <ul class="lstCol first">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">All Cities</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Premium Ads</a></li>
+                            <li><a href="#">Videos</a></li>
+                            <li><a href="#">Advertise With Us</a></li>
+                        </ul>
+                        <ul class="lstCol">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">All Cities</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Premium Ads</a></li>
+                            <li><a href="#">Videos</a></li>
+                            <li><a href="#">Advertise With Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footCol">
+                        <h3>About Us</h3>
+                        <p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+                    </div>
+                    <div class="footCol">
+                        <h3>Get In Touch</h3>
+                        <p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+                        <div class="footCont">
+                            <div class="location">
+                                <p><span>icon</span><span>Moonshine Street No: 14/05<br>
+                  Light City, Jupiter</span></p>
+                            </div>
+                            <div class="contNo">
+                                <p><span>icon</span><span>0247 541 65 87</span></p>
+                            </div>
+                            <div class="mail">
+                                <p><span>icon</span><span><a href="mailto:support@longwave.com">support@longwave.com</a></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row ends -->
+                <div class="footNav">
+                    <ul>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Techology</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Classifieds</a></li>
+                        <li><a href="#">Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="footInfo">
+                    <p> Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
+                </div>
+            </div>
+        </div>
+        <!-- footTop ends -->
+        <div class="footBottom">
+            <div class="container">
+                <div class="fRight">
+                    <div class="footImg"><img src="images/footImg.jpg" alt=""></div>
+                    <div class="footTxt"><span>Lorem Ipsum</span> ut aliquam massa nisl quis neque. Suspendisse in orci enim, aliquam massa nisl quis neque. Suspendisse in orci enim. </div>
+                </div>
+                <div class="fleft">
+                    <div>Copyright © 2014 Company Name.</div>
+                    <div class="footLnk"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer ends -->
+</div>
+
+<!--popup-->
+
+<!--Find Location-->
+
+
+<div class="find-locate">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <div class="overlayCont findLoc">
+            <div class="frmWrap">
+                <div class="inBox">
+                    <input type="text" name="serLoc" id="serLoc" placeholder="Search Location">
+                    <input type="submit" name="search" value="search">
+                </div>
+                <h2>Find Your Location</h2>
+                <hr>
+                <div class="frmContainer">
+                    <div class="cityLst">
+                        <h3 id="location_heading">Popular cities</h3>
+                        <div class="row" id="location_list">
+                            <ul>
+                                <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Agra">Agra</a></li>
+                                <li><a href="/fringe_circle/location_selection/Gujarat_Ahmedabad">Ahmedabad</a></li>
+                                <li><a href="/fringe_circle/location_selection/Karnataka_Bangalore">Bangalore</a></li>
+                                <li><a href="/fringe_circle/location_selection/Madhya Pradesh_Bhopal">Bhopal</a></li>
+                                <li><a href="/fringe_circle/location_selection/Tamil Nadu_Chennai">Chennai</a></li>
+                                <li><a href="/fringe_circle/location_selection/Delhi_Delhi">Delhi</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="/fringe_circle/location_selection/Andhra Pradesh_Hyderabad">Hyderabad</a></li>
+                                <li><a href="/fringe_circle/location_selection/Madhya Pradesh_Indore">Indore</a></li>
+                                <li><a href="/fringe_circle/location_selection/Rajasthan_Jaipur">Jaipur</a></li>
+                                <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Kanpur">Kanpur</a></li>
+                                <li><a href="/fringe_circle/location_selection/West Bengal_Kolkata">Kolkata</a></li>
+                                <li><a href="/fringe_circle/location_selection/Uttar Pradesh_Lucknow">Lucknow</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="/fringe_circle/location_selection/Punjab_Amritsar">Amritsar</a></li>
+                                <li><a href="/fringe_circle/location_selection/Punjab_Ludhiana">Ludhiana</a></li>
+                                <li><a href="/fringe_circle/location_selection/Maharashtra_Mumbai">Mumbai</a></li>
+                                <li><a href="/fringe_circle/location_selection/Maharashtra_Nagpur">Nagpur</a></li>
+                                <li><a href="/fringe_circle/location_selection/Bihar_Patna">Patna</a></li>
+                                <li><a href="/fringe_circle/location_selection/Maharashtra_Pune">Pune</a></li>
+                            </ul>
+                            <ul>
+                                <li onclick="populate_state_list();" style="color:#fff;background-color:#1994d1; text-align:center;">view all</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- frmContainer ends -->
+            </div>
+            <!-- frmWrap ends -->
+        </div>
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+<!--Login-->
+
+<div class="login-popup">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <h1>I already have a account</h1>
+
+        <div class="frmContainer">
+
+            <h3>Sign In</h3>
+            <form action="" method="post">
+                <div class="frmRow">
+                    <input type="text" name="userId" id="userId" placeholder="Email / User ID">
+                </div>
+                <div class="frmRow">
+                    <input type="password" name="pswd" id="pswdaltEmail" placeholder="Password">
+                </div>
+                <div class="subWrap">
+                    <input type="submit" name="" id="" value="Submit">
+                </div>
+            </form>
+            <div class="frgPass"> <a href="#">Forgot your password?</a> </div>
+
+        </div>
+
+
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+<!--Sign Up-->
+
+<div class="register-popup">
+    <div class="disc-post-wr">
+        <span class="close-btn">x</span>
+        <h1>Create new account</h1>
+
+        <div class="frmContainer">
+            <h3>Register</h3>
+            <form action="" method="post">
+                <div class="frmRow">
+                    <input type="email" name="workEmail" id="workEmail" placeholder="Work Email">
+                    <a href="#" class="quesIcon">question</a> </div>
+                <div class="frmRow">
+                    <input type="email" name="altEmail" id="altEmail" placeholder="Alternate Email">
+                    <a href="#" class="quesIcon">question</a> </div>
+                <div class="divider"><img src="/static/fringe_x/images/signupDiv.png"></div>
+                <div class="loginOpt">
+                    <div class="fbLogin"> <a href="#"><img src="/static/fringe_x/images/fbLogin-Btn.png"></a> </div>
+                    <!-- fbLogin ends -->
+                    <div class="linkIn-Login"> <a href="#"><img src="/static/fringe_x/images/linkIn-Btn.png"></a> </div>
+                    <!-- fbLogin ends -->
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="" id="">
+                    I agree with Terms of service </div>
+                <div class="subWrap">
+                    <input type="submit" name="" id="" value="Submit">
+                </div>
+            </form>
+            <div class="frm-msg">
+                <h4>Welcome to FringeCircle!</h4>
+                <p>Please check your e-mail for registration link.</p>
+                <p>Do not forget to check your spam folders!</p>
+            </div>
+        </div>
+
+
+        <div class="clearfx"></div>
+
+
+    </div>
+</div>
+
+
+
+
+
+<div class="overley-bg"></div>
+<!--popup-->
+
+</body>
+</html>
