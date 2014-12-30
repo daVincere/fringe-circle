@@ -22,7 +22,11 @@
 			animationLoop: 'true',
 			animationSpeed: 1000,
 			slideshow:'true',
-            controlsContainer: '.flexslider'
+            controlsContainer: '.flexslider',
+            after:function(slider){
+            $("#sliderHeadTxt").text("Header Text: "+slider.currentSlide );
+            $("#sliderContentTxt").text("Content Text: "+slider.currentSlide );
+            },
         });
 	  $('.testimonial').flexslider({
              animation: 'slide',
@@ -110,8 +114,8 @@
         <div class="header-bottom">
             <div class="top-text">
 
-                <h1>Gravida nibh vel velit auctor aliquet sollicitudin.</h1>
-                Consequat ipsum, nec sagittis sem nibh id elit.
+                <h1 id="sliderHeadTxt">Header Text 0.</h1>
+                <span id="sliderContentTxt">Content Text 0.</span>
 
             </div>
             <div class="clear"></div>
