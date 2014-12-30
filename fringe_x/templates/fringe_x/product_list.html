@@ -55,9 +55,9 @@ $("#circle_selection").buttonset();
 	$( "#slider" ).slider({
 
 		range: true,
-		min:1000,
-		max:99999,
-		values: [ 10000, 40000 ],
+		min:{{ price_range_obj_context.min_price }},
+		max:{{ price_range_obj_context.max_price }},
+		values: [ {{ price_range_obj_context.min_price }}, {{ price_range_obj_context.max_price }} ],
 		create:function(even,ui){
 		$("#price_range").text( "Price :Rs" + ui.values[ 0 ] + " - Rs" + ui.values[ 1 ] );
 		},
@@ -309,7 +309,7 @@ $(document).ready(function()
                                     {% endif %}
 
 
-                                    <h3 id="price_range">Price Range:Rs10000-40000</h3>
+                                    <h3 id="price_range">Price Range:Rs{{ price_range_obj_context.min_price }}-Rs{{ price_range_obj_context.max_price }}</h3>
                                     <div>
                                         <div id="slider"></div>
                                     </div>

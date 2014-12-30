@@ -99,6 +99,7 @@ def product_list(request,subcategory_name=None):
         subcategory_obj=models.ProductSubCategory.objects.get(name=subcategory_name)
         context_dict['subcategories_list_context']=models.ProductSubCategory.objects.filter(product_prime_category=subcategory_obj.product_prime_category)
         context_dict['subcategory_obj_context']=subcategory_obj
+        context_dict['price_range_obj_context']=models.ProductSubCategoryPriceRange.objects.get(subcategory=subcategory_obj)
         # context_dict['subcategory_ads_context']=models.ProductAd.objects.filter(subcategory=subcategory_obj)
 
         context_dict['subcategory_filters_context']=models.ProductSubFilter.objects.filter(subcategory=subcategory_obj)
@@ -121,7 +122,6 @@ def product_list(request,subcategory_name=None):
                         ads_list.append(data.ad)
 
     context_dict['ads_list']=ads_list
-
     context_dict['subcategory_ads_context']=models.ProductAd.objects.filter(subcategory=subcategory_obj)
 
     template_obj=loader.get_template("fringe_x/product_list.html")
@@ -151,6 +151,7 @@ def product_grid(request,subcategory_name=None):
         subcategory_obj=models.ProductSubCategory.objects.get(name=subcategory_name)
         context_dict['subcategories_list_context']=models.ProductSubCategory.objects.filter(product_prime_category=subcategory_obj.product_prime_category)
         context_dict['subcategory_obj_context']=subcategory_obj
+        context_dict['price_range_obj_context']=models.ProductSubCategoryPriceRange.objects.get(subcategory=subcategory_obj)
         # context_dict['subcategory_ads_context']=models.ProductAd.objects.filter(subcategory=subcategory_obj)
 
         context_dict['subcategory_filters_context']=models.ProductSubFilter.objects.filter(subcategory=subcategory_obj)
@@ -210,11 +211,18 @@ def post_ad(request,subcategory_name=None):
         ad_object.posted_by='Individual'
         ad_object.product_images='no'
         ad_object.no_of_views=0
-        ad_object.price=request.POST['price']
+        ad_object.price=float(request.POST['price'])
         ad_object.seller=models.User.objects.all()[0]
         datetime_current=timezone.localtime(timezone.now())
         ad_object.ad_post_duration=datetime_current
         ad_object.save()
+        #checking price range and setting new price range
+        price_range_obj=models.ProductSubCategoryPriceRange.objects.get(subcategory=subcat_obj)
+
+        if(ad_object.price>price_range_obj.max_price):
+            price_range_obj.max_price=ad_object.price
+            price_range_obj.save()
+
         context_dict['ad_object_context']=models.ProductAd.objects.get(ad_post_duration=datetime_current)
         for subfilter1 in models.ProductSubFilter.objects.filter(subcategory=models.ProductSubCategory.objects.get(name=request.session['subcat_name'])):
             if request.POST[subfilter1.name]:
