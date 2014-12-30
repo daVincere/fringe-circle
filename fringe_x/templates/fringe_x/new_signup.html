@@ -19,9 +19,24 @@
     <script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
     <script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="/static/fringe_x/js/jquery-ui.js"></script>
+    <script src="/static/fringe_x/js/signup_valid_logic.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/new_signup_style.css" />
-    <!-- <link href="css/jquery-ui.css" rel="stylesheet"> -->
+     <link href="css/jquery-ui.css" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="css/responsive.css" /> -->
+    <script>
+function alt_email_noti(){
+        $( "#dialog_alt_email" ).dialog({
+        modal:true,
+        });
+        }
+        function work_email_noti()
+        {
+        $( "#dialog_work_email" ).dialog({
+        modal:true,
+        });
+        }
+    </script>
 </head>
 <body>
 <div class="wrapper">
@@ -31,31 +46,43 @@
             <!-- Site Logo -->
             <h1><a href="/fringe_circle/" title="images-titel" target="_self"><img src="/static/fringe_x/images/site-logo.png" title="images-titel" alt="images-titel"></a></h1>
         </div>
+
+
     </div>
     <!-------end edit sanjeev-------------->
 </div>
 <div class="overlayBg "></div>
 <div class="overlayCont register ">
     <div class="frmWrap  headerMargin  ">  <!-------end edit sanjeev-- headermarging------------>
+
         <h2>Create new account</h2>
         <hr>
         <div class="frmContainer">
             <!--  <h3>Register</h3> -->
-            <form action="" method="post">
+            {% csrf_token %}
+            {% if signup_error_context %}
+            <span style="color:red;">{{ signup_error_context }}</span>
+            {% endif %}
+            <form action="/fringe_circle/signup/" method="post" id="signup_form" name="signup_form">{% csrf_token %}
                 <div class="frmRow">
                     <input type="email" name="workEmail" id="workEmail" placeholder="Work Email">
-                    <a href="#" class="quesIcon">question</a> </div>
+                    <a href="#" class="quesIcon" onclick="work_email_noti();">question</a> </div>
                 <div class="frmRow">
                     <input type="email" name="altEmail" id="altEmail" placeholder="Alternate Email">
-                    <a href="#" class="quesIcon">question</a> </div>
+                    <a href="#" class="quesIcon" onclick="alt_email_noti();">question</a> </div>
                 <div class="divider"><img src="/static/fringe_x/images/signupDiv.png"></div>
                 <div class="check">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="conditionCheckBox" id="conditionCheckBox">
                     I agree with Terms of service </div>
                 <div class="subWrap">
-                    <input type="submit" name="" id="" value="Submit">
+                    <input type="button" name="" id="" value="Submit" onclick="validate_input();">
                 </div>
             </form>
+        </div>
+        <br/>
+        <div>
+            Already have account?
+            <a href="/fringe_circle/login/">Login</a>
         </div>
         <!-- frmContainer ends -->
     </div>
@@ -64,5 +91,12 @@
 <!-- overlayFrm end -->
 
 </div>
+<div id="dialog_work_email" title="Work Email" style="display:none;">
+  <p>Message for work email</p>
+</div>
+<div id="dialog_alt_email" title="Alternate Email" style="display:none;">
+  <p>Message for alternate email</p>
+</div>
+
 </body>
 </html>
