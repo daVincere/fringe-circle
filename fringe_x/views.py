@@ -26,40 +26,11 @@ def fringecircle_index(request):
 
 def fringex_index(request):
     context_dict={}
-    # #select location logic starts here
-    # if request.method=="POST":
-    #     if 'change_state' in request.POST:
-    #         del request.session['name_of_state_session']
-    #
-    #         if 'name_of_city_session' in request.session:
-    #             del request.session['name_of_city_session']
-    #
-    #     if 'change_city' in request.POST:
-    #
-    #         if 'name_of_city_session' in request.session:
-    #             del request.session['name_of_city_session']
-    #
-    #     if 'name_of_state_select' in request.POST:
-    #         request.session["name_of_state_session"]=request.POST["name_of_state_select"]
-    #
-    #     if 'name_of_cities_select' in request.POST:
-    #         request.session["name_of_city_session"]=request.POST["name_of_cities_select"]
-    #
-    # if 'name_of_state_session' in request.session:
-    #     context_dict['name_of_state_context']=request.session["name_of_state_session"]
-    #     stateobj=models.State.objects.get(name_of_state=request.session['name_of_state_session'])
-    #
-    #     if 'name_of_city_session' in request.session:
-    #         context_dict["name_of_city_context"]=request.session["name_of_city_session"]
-    #     else:
-    #         context_dict['list_of_cities_context']=models.City.objects.filter(state=stateobj)
-    #
-    # else:
-    #     context_dict['list_of_states_context']=models.State.objects.all()
     if(user_signed_in(request)):
         current_user=models.User.objects.get(id=request.session["user_id"])
         context_dict["current_user_context"]=current_user
     else:
+        request.session["login_referer"]="/fringe_circle/fringe_x/"
         return HttpResponseRedirect("/fringe_circle/login/")
 
     if 'state_session' in request.session and 'city_session' in request.session:
@@ -598,7 +569,12 @@ def login(request):
             current_hash=current_hash_obj.hexdigest()
             if(current_hash==sec_creds.pass_hash):
                 request.session["user_id"]=user_c.id
-                return HttpResponseRedirect("/fringe_circle/")
+                if("login_referer" in request.session and request.session["login_referer"]):
+                    lgn_referer=request.session["login_referer"]
+                    del request.session["login_referer"]
+                    return HttpResponseRedirect(lgn_referer)
+                else:
+                    return HttpResponseRedirect("/fringe_circle/")
             context_dict["login_error_context"]="login error"
 
     template_obj=loader.get_template("fringe_x/new_login.html")
