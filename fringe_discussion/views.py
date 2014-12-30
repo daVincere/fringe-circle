@@ -63,6 +63,8 @@ def individual_discussion(request,discussion_id=None):
 
     if (discussion_id is not None):
         context_dict['discussion_obj_context']=models.Discussion.objects.get(id=discussion_id)
+        context_dict['discussion_obj_context'].no_of_views+=1
+        context_dict['discussion_obj_context'].save()
         context_dict['replies_context']=models.DiscussionReply.objects.filter(discussion=context_dict['discussion_obj_context'])
 
     template_obj=loader.get_template("fringe_discussion/individual-discussion.html")
@@ -96,6 +98,7 @@ def create_discussion(request):
         discussion_object.description=request.POST['description_postdisc']
         discussion_object.like_count=0
         discussion_object.unlike_count=0
+        discussion_object.no_of_views=0
         discussion_object.answers_count=0
         discussion_object.publish_date=timezone.localtime(timezone.now())
         discussion_object.user=fringex_models.User.objects.all()[0]

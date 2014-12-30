@@ -26,6 +26,7 @@ class Discussion(models.Model):
     subcategory=models.ForeignKey(DiscussionSubCategory)
     location_specific=models.CharField(max_length=3)
     like_count=models.IntegerField()
+    no_of_views=models.IntegerField()
     unlike_count=models.IntegerField()
     answers_count=models.IntegerField()
     state=models.ForeignKey(fringex_models.State,null=True)
