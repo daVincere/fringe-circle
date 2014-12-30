@@ -184,6 +184,7 @@ function enable_locations(value)
 		$('#state_select_postdisc').prop('disabled',false);
 		$('#city_select_postdisc').prop('disabled',false);
 		$('#locality_select_postdisc').prop('disabled',false);
+
 	}
 	else
 	{

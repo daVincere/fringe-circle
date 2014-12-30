@@ -28,6 +28,7 @@
     <script>
 $(document).ready(function(){
   	$(".discList .discBlock:nth-child(2n)").addClass("even");
+  	$("#circle_selection").buttonset();
 
   	$( "#accordion" ).accordion();
 
@@ -273,6 +274,10 @@ $(document).ready(function()
                     <div class="mainWrap">
                         <div class="filterCol">
                             <div id="accv ordion" class="custom">
+                                <div id="circle_selection" style="width:100%;">
+                                    <input type="radio" id="my_circle" checked="checked" name="circle_btn"><label for="my_circle">My Circle</label>
+                                    <input type="radio" id="all_circle" name="circle_btn"><label for="all_circle">All Circles</label>
+                                </div><br/>
                                 {% if subcategory_filters_context %}
                                 {% for subfilter in subcategory_filters_context %}
                                 <h3>{{ subfilter.name }}</h3>
@@ -301,9 +306,9 @@ $(document).ready(function()
 
 
                                 <h3 id="price_range">Price Range:Rs10000-40000</h3>
-                                    <div>
-                                        <div id="slider"></div>
-                                    </div>
+                                <div>
+                                    <div id="slider"></div>
+                                </div>
                                 {% if prime_category_filters_context %}
                                 {% for primefilter in prime_category_filters_context %}
                                 <h3>{{ primefilter.name }}</h3>

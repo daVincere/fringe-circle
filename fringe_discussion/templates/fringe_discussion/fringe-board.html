@@ -29,6 +29,7 @@
 	<script src="/static/fringe_discussion/js/jquery.autosize.js"></script>
 	<script>
 $(document).ready(function(){
+$("#circle_selection").buttonset();
 $('textarea').autosize();
   	$(".discList .discBlock:nth-child(2n)").addClass("even");
 
@@ -89,6 +90,7 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 		//alert(data.length);
 	});
 }
+
 </script>
 	<link rel="stylesheet" type="text/css" href="/static/fringe_discussion/css/responsive.css" />
 	<link href="/static/fringe_discussion/SpryAssets/SpryAccordion.css" rel="stylesheet" type="text/css">
@@ -103,11 +105,11 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 				<h1 class="logo"> <a href="/fringe_circle/">Fringe-Circle</a> </h1>
 				<div class="topNav">
 					<div class="hmLink"><a href="#"><img width="22px"src="/static/fringe_x/images/location-white.png"/>
-                        {% if location_state_context %}
-                        {% if location_city_context %}
-                        {{ location_city_context }}  ({{ location_state_context }})
-                        {% endif %}
-                        {% endif %}</a></div>
+						{% if location_state_context %}
+						{% if location_city_context %}
+						{{ location_city_context }}  ({{ location_state_context }})
+						{% endif %}
+						{% endif %}</a></div>
 					{% if current_user_context %}
 					<div class="logBtns">
 						<a href="#" id="signin" class="signBtn">Hi {{ current_user_context.name }}</a>
@@ -142,10 +144,10 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 							<select>
 								<option>
 									{% if location_state_context %}
-                                    {% if location_city_context %}
-                                    {{ location_state_context }}>{{ location_city_context }}
-                                    {% endif %}
-                                    {% endif %}
+									{% if location_city_context %}
+									{{ location_state_context }}>{{ location_city_context }}
+									{% endif %}
+									{% endif %}
 								</option>
 							</select>
 						</div>
@@ -196,9 +198,14 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 				<!-- catHead ends -->
 				<div class="main">
 					<div class="mainWrap">
+
 						<div class="filterCol">
 							<div class="custom">
 								<h3>Q&A Categories</h3>
+								<div id="circle_selection" style="width:100%;">
+									<input type="radio" id="my_circle" checked="checked" name="circle_btn"><label for="my_circle">My Circle</label>
+									<input type="radio" id="all_circle" name="circle_btn"><label for="all_circle">All Circles</label>
+								</div>
 								<div id="accordion">
 									{% if prime_cat_context %}
 									{% for prime_cat in prime_cat_context %}
@@ -242,10 +249,10 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 												<span class="ans">
 													<a href="/fringe_circle/fringe_individual_discussion/{{ discussion.id }}/">
 														{{ discussion.answers_count }} Answers
-														</a>
+													</a>
 												</span>
 												<!--<span class="rep">-->
-													<!--Reply-->
+												<!--Reply-->
 												<!--</span>-->
 												<span id="like_{{ discussion.id }}" class="like" onclick="get_likes_dislikes('like','{{ discussion.id }}');" style="cursor:pointer;">
 													{{ discussion.like_count }} likes
@@ -262,11 +269,11 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 											</div>
 
 											<form id="formno_{{ discussion.id }}" action="/fringe_circle/create_discussion_reply_form/{{ discussion.id }}/" method="POST">{% csrf_token %}
-											<textarea id="text_{{ discussion.id }}" placeholder="Answer this Question" class="board-disc-reply-box" name="reply_text"></textarea>
+												<textarea id="text_{{ discussion.id }}" placeholder="Answer this Question" class="board-disc-reply-box" name="reply_text"></textarea>
 											<span class="board-disc-reply-btn" onclick="post_board_replies('text_{{ discussion.id }}','{{ discussion.id }}');">
 												Reply
 											</span>
-												</form>
+											</form>
 
 										</div>
 									</div>
@@ -612,9 +619,9 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 			<span class="close-btn">x</span>
 			<div class="row">
 				<form action="/fringe_circle/post_discussion/" method="POST">{% csrf_token %}
-				<label class="close">Your Discussion</label>
+					<label class="close">Your Discussion</label>
 
-				<input type="text" placeholder="Discussion Title?" class="post-f-bx" name="discussion_title_postdisc">
+					<input type="text" placeholder="Discussion Title?" class="post-f-bx" name="discussion_title_postdisc">
 
 
 			</div>
@@ -680,8 +687,8 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 				</div>
 
 				<div class="post-bx-col last">
-					<label>Select Sub-Category</label>
-					<textarea rows="" class="post-f-bx" cols="" name="description_postdisc">Add detail...</textarea></div>
+					<label>Description</label>
+					<textarea rows="" class="post-f-bx" cols="" name="description_postdisc" placeholder="Add Description.."></textarea></div>
 			</div>
 
 			<div class="post-btn-row">

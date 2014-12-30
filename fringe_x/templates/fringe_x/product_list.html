@@ -27,6 +27,7 @@
     <script src="/static/fringe_x/js/ads_data.js"></script>
     <script>
 $(document).ready(function(){
+$("#circle_selection").buttonset();
   	$(".discList .discBlock:nth-child(2n)").addClass("even");
 
   	$( "#accordion" ).accordion();
@@ -173,12 +174,12 @@ $(document).ready(function()
     <div class="content">
         <div class="container">
             <!--<div class="adBlk">-->
-                <!--<div class="adCol1">-->
-                    <!--<div class="adBox"> <img src="/static/fringe_x/images/vidAd.jpg"> </div>-->
-                <!--</div>-->
-                <!--<div class="adCol2">-->
-                    <!--<div class="adBox"> <img src="/static/fringe_x/images/ad2.jpg"> </div>-->
-                <!--</div>-->
+            <!--<div class="adCol1">-->
+            <!--<div class="adBox"> <img src="/static/fringe_x/images/vidAd.jpg"> </div>-->
+            <!--</div>-->
+            <!--<div class="adCol2">-->
+            <!--<div class="adBox"> <img src="/static/fringe_x/images/ad2.jpg"> </div>-->
+            <!--</div>-->
             <!--</div>-->
             <div class="categoryLst">
                 <div class="catHead">
@@ -276,6 +277,10 @@ $(document).ready(function()
                         <form id="filter_search" name="filter_search" method="post" action="/fringe_circle/product_list/{{ subcategory_name_context }}/">{% csrf_token %}
                             <div class="filterCol">
                                 <div id="accv ordion" class="custom">
+                                    <div id="circle_selection" style="width:100%;">
+                                        <input type="radio" id="my_circle" checked="checked" name="circle_btn"><label for="my_circle">My Circle</label>
+                                        <input type="radio" id="all_circle" name="circle_btn"><label for="all_circle">All Circles</label>
+                                    </div><br/>
                                     {% if subcategory_filters_context %}
                                     {% for subfilter in subcategory_filters_context %}
                                     <h3>{{ subfilter.name }}</h3>
