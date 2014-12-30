@@ -43,17 +43,6 @@ def fringex_index(request):
     context_dict['product_prime_category_context']=models.ProductPrimeCategory.objects.all()
     context_dict['product_subcategory_context']=models.ProductSubCategory.objects.all()
     subcat_dict={}
-    # for prime_cat in models.ProductPrimeCategory.objects.all():
-    #     counter=0
-    #     temp=[]
-    #     for subcat in models.ProductSubCategory.objects.all():
-    #         if subcat.product_prime_category == prime_cat:
-    #             temp.append(subcat.name)
-    #             counter+=1
-    #         if counter ==4:
-    #             subcat_dict[prime_cat]=temp
-    #             break
-
     for prime_cat in models.ProductPrimeCategory.objects.all():
         subcats=models.ProductSubCategory.objects.filter(product_prime_category=prime_cat)
         temp=[]
@@ -220,6 +209,7 @@ def post_ad(request,subcategory_name=None):
         ad_object.locality=models.Locality.objects.get(name_of_locality=request.POST['locality_select'])
         ad_object.posted_by='Individual'
         ad_object.product_images='no'
+        ad_object.no_of_views=0
         ad_object.price=request.POST['price']
         ad_object.seller=models.User.objects.all()[0]
         datetime_current=timezone.localtime(timezone.now())
@@ -286,6 +276,8 @@ def individual_ad(request,ad_id=None):
 
     if ad_id is not None:
         product_ad_obj=models.ProductAd.objects.get(id=ad_id)
+        product_ad_obj.no_of_views+=1
+        product_ad_obj.save()
         context_dict['product_ad_obj_context']=product_ad_obj
         context_dict['subfilter_data_context']=models.ProductSubFilterData.objects.filter(ad=ad_id)
         context_dict['primefilter_data_context']=models.ProductPrimeFilterData.objects.filter(ad=ad_id)

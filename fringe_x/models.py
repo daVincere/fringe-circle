@@ -66,6 +66,7 @@ class ProductAd(models.Model):
     subcategory=models.ForeignKey(ProductSubCategory)
     title=models.CharField(max_length=100)
     description=models.CharField(max_length=500)
+    no_of_views=models.IntegerField()
     seller=models.ForeignKey(User)
     state=models.ForeignKey(State)
     city=models.ForeignKey(City)

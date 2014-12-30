@@ -8,7 +8,7 @@
     <script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
     <script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="/static/fringe_x/js/custom.js"></script>
-    <script src="/static/fringe_x/js/dropzone.js"></script>
+    <!--<script src="/static/fringe_x/js/dropzone.js"></script>-->
 
     <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
     <script type="text/javascript">
@@ -48,9 +48,23 @@
         <!-- <div class="row" -->
         <h1 class="logo"> <a href="/fringe_circle/">Fringe-Cirle</a> </h1>
         <div class="topNav">
-            <div class="hmLink"><a href="#">Home</a></div>
-            <div class="logBtns"> <a href="#" id="signIn" class="signBtn">Sign In</a> <a href="#" id="regIn" class="regBtn">Register</a> </div>
-            <div class="socialIco"> <a href="#" class="fb" title="Facebook">Facebook</a> <a href="#" class="twit" title="twitter">Twitter</a> <a href="#" class="gPlus" title="Google Plus">Google Plus</a> <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>
+            <div class="hmLink">
+                <img width="22px"src="/static/fringe_x/images/location-white.png"/>
+                        {% if location_state_context %}
+                        {% if location_city_context %}
+                        {{ location_city_context }}  ({{ location_state_context }})
+                        {% endif %}
+                        {% endif %}
+                <!--<a href="#">Home</a>-->
+            </div>
+
+            {% if current_user_context %}
+                    <div class="logBtns">
+                        <a href="#" id="signin" class="signBtn">Hi {{ current_user_context.name }}</a>
+                        <a href="/fringe_circle/logout/" id="regin" class="regBtn">Logout</a>
+                    </div>
+                    {% endif %}
+            <!--<div class="socialIco"> <a href="#" class="fb" title="Facebook">Facebook</a> <a href="#" class="twit" title="twitter">Twitter</a> <a href="#" class="gPlus" title="Google Plus">Google Plus</a> <a href="#" class="lkIn" title="Linked In">Linked In</a> </div>-->
         </div>
         <!-- topNav ends -->
         <!-- </div> -->
