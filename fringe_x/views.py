@@ -636,7 +636,7 @@ def signup(request):
         if(len(results)==1 or already_exists):
             context_dict["signup_error_context"]="%s is already registered" %(requested_corporate_email)
 
-    template_obj=loader.get_template("fringe_x/signUp.html")
+    template_obj=loader.get_template("fringe_x/new_signup.html")
     context_obj=RequestContext(request,context_dict)
     return HttpResponse(template_obj.render(context_obj))
 
