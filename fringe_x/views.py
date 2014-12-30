@@ -601,7 +601,7 @@ def login(request):
                 return HttpResponseRedirect("/fringe_circle/")
             context_dict["login_error_context"]="login error"
 
-    template_obj=loader.get_template("fringe_x/login.html")
+    template_obj=loader.get_template("fringe_x/new_login.html")
     context_obj=RequestContext(request,context_dict)
     return HttpResponse(template_obj.render(context_obj))
 
