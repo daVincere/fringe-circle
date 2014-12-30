@@ -44,6 +44,14 @@ class ProductSubCategory(models.Model):
     def __unicode__(self):
         return self.name
 
+class ProductSubCategoryPriceRange(models.Model):
+    subcategory=models.ForeignKey(ProductSubCategory)
+    min_price=models.FloatField()
+    max_price=models.FloatField()
+
+    def __unicode__(self):
+        return self.subcategory.name+"-"+str(self.min_price)+":"+str(self.max_price)
+
 class User(models.Model):
     name=models.CharField(max_length=100)
     corporate_email_id=models.EmailField()

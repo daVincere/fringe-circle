@@ -38,4 +38,5 @@ admin.site.register(models.Locality,LocalityFilterAdmin)
 admin.site.register(models.ProductAd)
 admin.site.register(models.User)
 admin.site.register(models.TempRegistrations)
+admin.site.register(models.ProductSubCategoryPriceRange)
 
