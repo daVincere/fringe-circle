@@ -6,62 +6,63 @@
 <html class="no-js" dir="ltr" lang="en-US">
 <!--<![endif]-->
 <head>
-<meta charset="utf-8">
-<meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-<title>Fringe-X</title>
-<!-- <link rel="shortcut icon" href="favicon.png" > -->
-<!--[if lt IE 9]>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>Fringe-X</title>
+    <!-- <link rel="shortcut icon" href="favicon.png" > -->
+    <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/html5shiv-printshiv.js"></script>
-<![endif]-->
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<!-- <link href="css/jquery-ui.css" rel="stylesheet"> -->
-<!-- <link rel="stylesheet" type="text/css" href="css/responsive.css" /> -->
+    <![endif]-->
+    <script src="/static/fringe_x/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/fringe_x/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/fringe_x/js/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/fringe_x/css/style.css" />
+    <!-- <link href="css/jquery-ui.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/responsive.css" /> -->
 </head>
 <body>
 <div class="wrapper">
-<!-------edit by sanjeev 25/dec/2014- headerfix---->
-<div class="headerfix">
-    <div class="wrap-section header-wrap"> 
-      <!-- Site Logo -->
-      <h1><a href="/fringe_circle/" title="images-titel" target="_self"><img src="images/site-logo.png" title="images-titel" alt="images-titel"></a></h1>
+    <!-------edit by sanjeev 25/dec/2014- headerfix---->
+    <div class="headerfix">
+        <div class="wrap-section header-wrap">
+            <!-- Site Logo -->
+            <h1><a href="/fringe_circle/" title="images-titel" target="_self"><img src="/static/fringe_x/images/site-logo.png" title="images-titel" alt="images-titel"></a></h1>
+        </div>
     </div>
+    <!-------end edit sanjeev-------------->
+</div>
+<div class="overlayBg "></div>
+<div class="overlayCont register ">
+    <div class="frmWrap  headerMargin  ">  <!-------end edit sanjeev-- headermarging------------>
+        <h2>Create new account</h2>
+        <hr>
+        <div class="frmContainer">
+            <!--  <h3>Register</h3> -->
+            <form action="" method="post">
+                <div class="frmRow">
+                    <input type="email" name="workEmail" id="workEmail" placeholder="Work Email">
+                    <a href="#" class="quesIcon">question</a> </div>
+                <div class="frmRow">
+                    <input type="email" name="altEmail" id="altEmail" placeholder="Alternate Email">
+                    <a href="#" class="quesIcon">question</a> </div>
+                <div class="divider"><img src="/static/fringe_x/images/signupDiv.png"></div>
+                <div class="check">
+                    <input type="checkbox" name="" id="">
+                    I agree with Terms of service </div>
+                <div class="subWrap">
+                    <input type="submit" name="" id="" value="Submit">
+                </div>
+            </form>
+        </div>
+        <!-- frmContainer ends -->
     </div>
-      <!-------end edit sanjeev-------------->
-  </div>
-  <div class="overlayBg "></div>
-  <div class="overlayCont register ">
-    <div class="frmWrap  headerMargin  ">  <!-------end edit sanjeev-- headermarging------------>  
-      <h2>Create new account</h2>
-      <hr>
-      <div class="frmContainer">
-       <!--  <h3>Register</h3> -->
-        <form action="" method="post">
-          <div class="frmRow">
-            <input type="email" name="workEmail" id="workEmail" placeholder="Work Email">
-            <a href="#" class="quesIcon">question</a> </div>
-          <div class="frmRow">
-            <input type="email" name="altEmail" id="altEmail" placeholder="Alternate Email">
-            <a href="#" class="quesIcon">question</a> </div>
-          <div class="divider"><img src="images/signupDiv.png"></div>
-          <div class="check">
-            <input type="checkbox" name="" id="">
-            I agree with Terms of service </div>
-          <div class="subWrap">
-            <input type="submit" name="" id="" value="Submit">
-          </div>
-        </form>
-      </div>
-      <!-- frmContainer ends --> 
-    </div>
-    <!-- frmWrap ends --> 
-  </div>
-  <!-- overlayFrm end --> 
-  
+    <!-- frmWrap ends -->
+</div>
+<!-- overlayFrm end -->
+
 </div>
 </body>
 </html>
