@@ -17,6 +17,7 @@ def board_index(request,discussion_cat=None,page_index=None):
         current_user=fringex_models.User.objects.get(id=request.session["user_id"])
         context_dict["current_user_context"]=current_user
     else:
+        request.session["login_referer"]="/fringe_circle/fringe_board/all/"
         return HttpResponseRedirect("/fringe_circle/login/")
 
     if ('state_session' in request.session and
