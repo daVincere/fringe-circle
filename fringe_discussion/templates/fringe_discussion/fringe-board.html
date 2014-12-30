@@ -238,7 +238,11 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 									<div class="fringe-disc-row">
 										<div class="fringe-user"> <img src="/static/fringe_discussion/images/fri-user.png"> </div>
 										<div class="fringe-chat">
-											<div class="fring-social"> <a href="#" class="fb"></a> <a href="#" class="gt"></a> <a href="#" class="twttr"></a> </div>
+											<div class="fring-social">
+												<!--<a href="#" class="fb"></a>-->
+												<!--<a href="#" class="gt"></a>-->
+												<!--<a href="#" class="twttr"></a>-->
+											</div>
 											<h2><a href="/fringe_circle/fringe_individual_discussion/{{ discussion.id }}">{{ discussion.title }}</a></h2>
 											<div class="fringe-month">{{ discussion.user.name }} asked  -  {{discussion.category.name}}:{{ discussion.subcategory.name }} - {{ discussion.publish_date }}</div>
 											<div class="fringe-que">{{ discussion.description }} <a href="/fringe_circle/fringe_individual_discussion/{{ discussion.id }}" class="rdmore">Read more »</a> </div>
@@ -263,9 +267,9 @@ function populate_disc_sub_cat_dropdown(prime_cat_name)
 												<span class="foll">
 													Follow
 												</span>
-												<span class="share">
-													Share
-												</span>
+												<!--<span class="share">-->
+													<!--Share-->
+												<!--</span>-->
 											</div>
 
 											<form id="formno_{{ discussion.id }}" action="/fringe_circle/create_discussion_reply_form/{{ discussion.id }}/" method="POST">{% csrf_token %}

@@ -158,7 +158,11 @@ $('textarea').autosize();
 									<div class="fringe-disc-row">
 										<div class="fringe-user"> <img src="/static/fringe_discussion/images/fri-user.png"> </div>
 										<div class="fringe-chat">
-											<div class="fring-social"> <a href="#" class="fb"></a> <a href="#" class="gt"></a> <a href="#" class="twttr"></a> </div>
+											<div class="fring-social">
+												<!--<a href="#" class="fb"></a>-->
+												<!--<a href="#" class="gt"></a>-->
+												<!--<a href="#" class="twttr"></a>-->
+											</div>
 											<h2>{{ discussion_obj_context.title }}</h2>
 											<div class="fringe-month">{{ discussion_obj_context.user.name }} posted  -  {{discussion_obj_context.category.name}}:{{ discussion_obj_context.subcategory.name }} - {{ discussion_obj_context.publish_date }}</div>
 										</div>
@@ -175,13 +179,16 @@ $('textarea').autosize();
 										<span class="ans">
 											{{ discussion_obj_context.answers_count }}
 										</span>
-										<span class="rep">Reply</span>
+										<!--<span class="rep">Reply</span>-->
 										<span id="like_{{ discussion_obj_context.id }}" class="like" onclick="get_likes_dislikes('like','{{ discussion_obj_context.id }}');" style="cursor:pointer;">
 											{{ discussion_obj_context.like_count }} Like
 										</span>
 										<span id="unlike_{{ discussion_obj_context.id }}" class="unlike" onclick="get_likes_dislikes('unlike','{{ discussion_obj_context.id }}');" style="cursor:pointer;">
 											{{ discussion_obj_context.unlike_count }} Unlike
-										</span> <span class="foll">Follow</span> <span class="share">Share</span> </div>
+										</span>
+										<span class="foll">Follow</span>
+										<!--<span class="share">Share</span>-->
+									</div>
 
 									<div class="indi-dropdown"><div class="list-dropdown"><select name="">
 
